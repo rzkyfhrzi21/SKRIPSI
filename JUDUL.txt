@@ -1,0 +1,26 @@
+### Rancang Bangun Aplikasi Rekomendasi Kos Menggunakan Kombinasi Algoritma Haversine Distance dan Metode Simple Additive Weighting (SAW) Studi Kasus Institut Informatika dan Bisnis Darmajaya
+
+Informasi kos di sekitar kampus tersebar manual tanpa data jarak, harga, dan fasilitas yang objektif
+Mahasiswa kesulitan membandingkan kos karena belum ada sistem rekomendasi berbasis banyak kriteria sekaligus
+Sistem rekomendasi kos yang ada umumnya hanya mempertimbangkan satu kriteria (jarak atau harga saja), belum mengombinasikan keduanya secara terukur
+
+#ALTERNATIF KOS, LAYANAN KESEHATAN (PUSKES/KLINIK GIGI) & SEBAGAINYA
+
+
+SISTEM REKOMENDASI PEMILIHAN TEMPAT KOS MAHASISWA DI WILAYAH SLEMAN MENGGUNAKAN SIMPLE ADDITIVE WEIGHTING BERBASIS MOBILE
+https://journal.unilak.ac.id/index.php/zn/issue/view/777
+
+Penerapan Metode Haversine Formula Untuk Mengetahui Lokasi Terdekat Rumah Kos Dan Penyebarannya Berbasis Android Di Kota Bandar Lampung
+https://repo.darmajaya.ac.id/19527/
+
+### Implementasi Metode Retrieval-Augmented Generation untuk Chatbot Informasi Akademik pada SMK Swadhipa 2 Natar
+
+Informasi akademik sekolah tersebar di berbagai dokumen (tata tertib, jadwal, kalender sekolah)
+Siswa dan calon siswa sering menanyakan hal yang sama secara berulang ke pihak TU/guru
+Chatbot konvensional (rule-based/FAQ statis) memiliki keterbatasan dalam memahami variasi pertanyaan siswa
+
+Optimalisasi Layanan Sistem Informasi Mahasiswa dengan
+Integrasi Telegram : Chatbot Retrieval-Augmented-Generation
+berbasis Large Language Model x
+https://unram.sgp1.digitaloceanspaces.com/simlitabmas/kinerja/penelitian/jurnal/bd959155-3a43-440d-8198-1f6a74f35fdc-459-Article%20Text-2459-1-10-20250322.pdf
+

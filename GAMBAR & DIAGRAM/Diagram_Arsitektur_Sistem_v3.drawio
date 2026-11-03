@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" version="24.0.0">
+  <diagram id="arch-v3" name="Arsitektur Sistem v3 (BW)">
+    <mxGraphModel dx="1422" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- JUDUL -->
+        <mxCell id="title" value="&lt;b&gt;ARSITEKTUR SISTEM TIGA TINGKAT (THREE-TIER)&lt;/b&gt;&lt;br&gt;Sistem Rekomendasi Kos IIB Darmajaya" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;fontColor=#FFFFFF;fontSize=13;align=center;" vertex="1" parent="1">
+          <mxGeometry x="80" y="30" width="1010" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- TIER 1: CLIENT -->
+        <mxCell id="t1_label" value="&lt;b&gt;LAPISAN KLIEN (CLIENT TIER)&lt;/b&gt;" style="swimlane;startSize=25;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="80" y="100" width="1010" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="c1" value="&lt;b&gt;Aplikasi Mobile Mahasiswa (Flutter)&lt;/b&gt;&lt;br&gt;Input Bobot Kriteria · Lihat Rekomendasi · Navigasi Peta" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#000000;align=center;fontSize=11;" vertex="1" parent="t1_label">
+          <mxGeometry x="30" y="35" width="440" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="c2" value="&lt;b&gt;Aplikasi Mobile Administrator (Flutter)&lt;/b&gt;&lt;br&gt;Login JWT · Manajemen Data Kos (CRUD) · Input Koordinat GPS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#000000;align=center;fontSize=11;" vertex="1" parent="t1_label">
+          <mxGeometry x="540" y="35" width="440" height="65" as="geometry" />
+        </mxCell>
+
+        <!-- ARROW T1 → T2 -->
+        <mxCell id="arr1" value="RESTful API (JSON / HTTPS)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#000000;strokeWidth=2;fontSize=11;fontStyle=1;endArrow=block;startArrow=block;startFill=1;endFill=1;" edge="1" parent="1" source="t1_label" target="t2_label">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- TIER 2: APPLICATION SERVER -->
+        <mxCell id="t2_label" value="&lt;b&gt;LAPISAN SERVER APLIKASI (APPLICATION TIER — Go REST API)&lt;/b&gt;" style="swimlane;startSize=25;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="80" y="270" width="1010" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="b1" value="&lt;b&gt;Haversine Distance Engine&lt;/b&gt;&lt;br&gt;Hitung jarak garis lurus kampus–kos" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#000000;align=center;fontSize=11;" vertex="1" parent="t2_label">
+          <mxGeometry x="30" y="40" width="290" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="b2" value="&lt;b&gt;Decision Engine SAW&lt;/b&gt;&lt;br&gt;Normalisasi matriks · Bobot preferensi · Ranking Vi" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#000000;align=center;fontSize=11;" vertex="1" parent="t2_label">
+          <mxGeometry x="360" y="40" width="290" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="b3" value="&lt;b&gt;Auth &amp; Data Service&lt;/b&gt;&lt;br&gt;Token JWT · Validasi JSON · Repository DB" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#000000;align=center;fontSize=11;" vertex="1" parent="t2_label">
+          <mxGeometry x="690" y="40" width="290" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- ARROW T2 → T3 -->
+        <mxCell id="arr2" value="Kueri SQL · Layanan Spasial Eksternal" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#000000;strokeWidth=2;fontSize=11;fontStyle=1;endArrow=block;startArrow=block;startFill=1;endFill=1;" edge="1" parent="1" source="t2_label" target="t3_label">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- TIER 3: DATA & EXTERNAL -->
+        <mxCell id="t3_label" value="&lt;b&gt;LAPISAN BASIS DATA &amp; LAYANAN EKSTERNAL (DATA TIER)&lt;/b&gt;" style="swimlane;startSize=25;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontSize=12;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="80" y="460" width="1010" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="d1" value="&lt;b&gt;Database MySQL&lt;/b&gt;&lt;br&gt;Data Master Kos · Kriteria SAW · Koordinat GPS · Kredensial Admin" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#000000;align=center;fontSize=11;" vertex="1" parent="t3_label">
+          <mxGeometry x="30" y="35" width="440" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="d2" value="&lt;b&gt;Google Maps Platform API&lt;/b&gt;&lt;br&gt;Maps SDK · Geocoding API · Directions API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#000000;align=center;fontSize=11;" vertex="1" parent="t3_label">
+          <mxGeometry x="540" y="35" width="440" height="65" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

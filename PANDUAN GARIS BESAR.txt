@@ -1,0 +1,78 @@
+================================================================================
+📌 GARIS BESAR ALUR LOGIKA PENELITIAN SKRIPSI (7 LANGKAH EMAS)
+JUDUL    : REKOMENDASI KOS MENGGUNAKAN HAVERSINE DISTANCE & SAW
+NAMA     : RIZKY FAHREZI (NPM: 2311010133)
+INSTITUSI: S1 TEKNIK INFORMATIKA - IIB DARMAJAYA BANDAR LAMPUNG
+================================================================================
+
+1. PENGUMPULAN DATA
+   - Menggunakan kuesioner digital (Google Forms) kepada mahasiswa aktif perantau
+     kampus IIB Darmajaya.
+   - Menghimpun 3 data utama:
+     a. Profil mahasiswa perantau.
+     b. Data penilaian tingkat kepentingan 6 kriteria (Skala Likert 1-5).
+     c. Data fisik tempat kos riil dan tautan link/titik koordinat Google Maps.
+
+2. HITUNG JARAK DENGAN HAVERSINE DISTANCE (KRITERIA C2)
+   - Menghitung jarak garis lurus terpendek pada permukaan bumi bola (sferis)
+     berdasarkan koordinat lintang (latitude) dan bujur (longitude).
+   - Titik acuan awal adalah Gerbang Utama Kampus IIB Darmajaya (-5.3789° LS, 105.2538° BT)
+     terhadap titik koordinat lokasi masing-masing rumah kos.
+   - Hasil jarak linier (dalam satuan meter) ini langsung menjadi nilai numerik
+     untuk Kriteria Jarak (C2) pada metode SAW.
+
+3. MEMBENTUK MATRIKS KEPUTUSAN (X)
+   - Menyusun matriks X berukuran m alternatif kos x 6 kriteria.
+   - Setiap kos (A1, A2, A3, dst.) dimasukkan ke baris matriks dengan nilai asli
+     masing-masing kriteria yang diperoleh:
+     * C1 (Harga Sewa)      : Nilai asli nominal rupiah per tahun (misal: Rp 5.000.000)
+     * C2 (Jarak Haversine) : Nilai asli meter dari gerbang kampus (misal: 351 meter)
+     * C3 (Fasilitas Kamar) : Nilai skor skala 1-5
+     * C4 (Luas Kamar)      : Nilai skor skala 1-5
+     * C5 (Kebersihan)      : Nilai skor skala 1-5
+     * C6 (Keamanan)        : Nilai skor skala 1-5
+
+4. MENETAPKAN BOBOT PREFERENSI (W)
+   - Setiap kriteria memiliki bobot kepentingan (Wj) yang mencerminkan prioritas:
+     Misalkan W1 (Harga) = 0.25 (25%), W2 (Jarak) = 0.25 (25%), W3 (Fasilitas) = 0.20 (20%),
+     W4 (Luas) = 0.10 (10%), W5 (Kebersihan) = 0.10 (10%), W6 (Keamanan) = 0.10 (10%).
+   - Total penjumlahan seluruh bobot W wajib pas 1.00 (100%).
+   - Di aplikasi mobile Flutter, bobot ini bisa disesuaikan secara dinamis oleh mahasiswa
+     lewat slider preferensi.
+
+5. NORMALISASI MATRIKS KEPUTUSAN (R)
+   - Menyelaraskan seluruh nilai kriteria yang berbeda satuan ke rentang skala seragam 0 s.d. 1:
+   a. Kriteria Biaya (Cost - C1 Harga & C2 Jarak):
+      * Logika: Nilai asli yang paling kecil (terbaik) dari keseluruhan kos dibagi
+        nilai asli dari masing-masing kos.
+      * Rumus: Rij = Min(Xij) / Xij
+      * (Kos yang paling murah dan paling dekat akan mendapat nilai rapor sempurna 1.0).
+   b. Kriteria Keuntungan (Benefit - C3 Fasilitas, C4 Luas, C5 Bersih, C6 Aman):
+      * Logika: Nilai asli dari masing-masing kos dibagi ke nilai terbesar yang ada
+        dari keseluruhan kos.
+      * Rumus: Rij = Xij / Max(Xij)
+      * (Kos yang fasilitasnya paling lengkap atau paling bersih mendapat nilai 1.0).
+
+6. MENGHITUNG NILAI PREFERENSI AKHIR (Vi)
+   - Mengalikan nilai ternormalisasi (Rij) pada setiap baris kos dengan bobot preferensi
+     kriteria (Wj), lalu menjumlahkan seluruh hasilnya:
+     Formula: Vi = ∑ (Wj * Rij)
+   - Contoh Perhitungan V1 (Kos Mawar):
+     V1 = (0.25 * 0.840) + (0.25 * 0.991) + (0.20 * 0.800) + (0.10 * 0.750) + (0.10 * 0.800) + (0.10 * 0.800)
+     V1 = 0.2100 + 0.2478 + 0.1600 + 0.0750 + 0.0800 + 0.0800
+     V1 = 0.8528
+
+7. KESIMPULAN & PERANGKINGAN DI APLIKASI
+   - Mengurutkan nilai Vi dari yang terbesar hingga terkecil:
+
+   +-----------+------+----------------------------+----------+---------------------------------+
+   | Peringkat | Kode | Nama Tempat Kos            | Skor Vi  | Status Rekomendasi di Mobile    |
+   +-----------+------+----------------------------+----------+---------------------------------+
+   |   🥇 1    |  A1  | Kos Mawar (Gg. Rajawali)   |  0.8528  | Rekomendasi Utama (Terbaik)     |
+   |   🥈 2    |  A3  | Kos Anggrek (Gg. PU)       |  0.8150  | Rekomendasi Alternatif Kedua    |
+   |   🥉 3    |  A2  | Kos Melati (Gedong Meneng) |  0.7455  | Rekomendasi Alternatif Ketiga   |
+   +-----------+------+----------------------------+----------+---------------------------------+
+
+   - Hasil Juara 1 otomatis tampil di urutan paling atas pada kartu rekomendasi aplikasi
+     Flutter mahasiswa, lengkap dengan tombol navigasi rute Google Maps.
+================================================================================

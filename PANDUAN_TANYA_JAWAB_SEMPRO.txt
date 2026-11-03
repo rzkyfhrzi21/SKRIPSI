@@ -1,0 +1,256 @@
+================================================================================
+🎓 PANDUAN TANYA JAWAB & ARGUMENTASI ILMIAH SEMINAR PROPOSAL (SEMPRO)
+SKRIPSI : IMPLEMENTASI METODE HAVERSINE DISTANCE DAN SIMPLE ADDITIVE WEIGHTING (SAW)
+          UNTUK REKOMENDASI KOS STUDI KASUS INSTITUT INFORMATIKA DAN BISNIS DARMAJAYA
+PENELITI: RIZKY FAHREZI (NPM: 2311010133)
+PROGRAM : S1 TEKNIK INFORMATIKA - INSTITUT INFORMATIKA DAN BISNIS (IIB) DARMAJAYA
+================================================================================
+
+--------------------------------------------------------------------------------
+📌 PERTANYAAN 1: BAGAIMANA CARA KERJA SISTEM SECARA SEDERHANA?
+--------------------------------------------------------------------------------
+PERTANYAAN PENGUJI:
+"Coba jelaskan alur logika dan cara kerja sistem Anda dengan bahasa yang sederhana
+tanpa berbelit-belit!"
+
+JAWABAN REKOMENDASI:
+"Izin menjawab Bapak/Ibu Penguji. Secara langsung pada studi kasus penelitian ini,
+sistem bekerja sebagai sistem pendukung keputusan bagi mahasiswa perantau IIB Darmajaya
+dalam menentukan pilihan tempat kos terbaik:
+
+1. Peran Haversine Distance ('Radar Jarak Kampus ke Kos'):
+   Sebelum menilai fasilitas atau harga, sistem mengukur jarak garis lurus bola bumi
+   secara presisi dari posisi acuan gerbang utama kampus IIB Darmajaya (-5.3789° LS, 105.2538° BT)
+   menuju titik koordinat GPS masing-masing rumah kos. Output-nya adalah angka jarak riil
+   dalam meter (misal: Kos Mawar 351 meter, Kos Melati 825 meter). Jarak ini langsung
+   menjadi nilai kriteria C2 pada metode SAW.
+
+2. Peran Simple Additive Weighting / SAW ('Penilai Multikriteria Objektif'):
+   Setelah jarak diperoleh, SAW mengevaluasi kelayakan setiap kos berdasarkan 6 kriteria:
+   - Kriteria Biaya (Cost - Semakin kecil semakin hemat bagi mahasiswa):
+     * C1: Harga Sewa Tahunan (Rp)
+     * C2: Jarak Geografis ke Kampus (meter)
+   - Kriteria Keuntungan (Benefit - Semakin besar semakin menguntungkan mahasiswa):
+     * C3: Fasilitas Kamar (skala 1–5)
+     * C4: Luas Kamar (skala 1–5)
+     * C5: Kebersihan Lingkungan (skala 1–5)
+     * C6: Keamanan Hunian (skala 1–5)
+
+3. Fungsi Normalisasi Matriks (Penyetaraan Dimensi Satuan):
+   Sistem menyetarakan berbagai satuan yang berbeda (jutaan rupiah, ratusan meter,
+   dan skor 1–5) ke dalam rentang nilai seragam berskala 0 hingga 1. Kos yang paling murah
+   dan paling dekat akan mendapatkan nilai normalisasi mendekati 1.0.
+
+4. Skor Preferensi Akhir (Vi) dan Perangkingan:
+   Nilai ternormalisasi dikalikan dengan bobot preferensi mahasiswa, lalu dijumlahkan.
+   Kos yang memiliki nilai Vi tertinggi otomatis keluar sebagai Rekomendasi Peringkat 1
+   pada antarmuka mobile Flutter."
+
+
+--------------------------------------------------------------------------------
+📌 PERTANYAAN 2: DARI MANA ASAL BOBOT KRITERIA (W) DAN SIAPA YANG MENENTUKAN?
+--------------------------------------------------------------------------------
+PERTANYAAN PENGUJI:
+"Apakah bobot kriteria SAW Anda patok dari awal sebagai peneliti, atau pengguna
+yang menentukan sendiri?"
+
+JAWABAN REKOMENDASI:
+"Izin menjawab Bapak/Ibu Penguji. Sistem kami menerapkan pendekatan terpadu (Hybrid):
+
+1. Bobot Awal / Default (Bawaan Sistem):
+   Kami telah menetapkan bobot dasar ilmiah berdasarkan hasil survei kuesioner skala
+   Likert (1–5) kepada mahasiswa aktif perantau IIB Darmajaya. Bobot ini merepresentasikan
+   standar prioritas umum mahasiswa kampus.
+
+2. Bobot Dinamis / Personal (Fleksibilitas Pengguna):
+   Pada aplikasi mobile Flutter (sebagaimana dirancang pada Wireframe Gambar 3.6),
+   mahasiswa diberikan keleluasaan mengubah nilai bobot preferensi (1–5) secara mandiri.
+   Mahasiswa yang memiliki kendaraan pribadi dapat menurunkan bobot jarak dan menaikkan
+   bobot fasilitas, sedangkan mahasiswa dengan anggaran terbatas dapat memprioritaskan
+   harga dan jarak.
+
+Dengan demikian, sistem rekomendasi ini bersifat adaptif dan berpusat pada kebutuhan
+personal pengguna (User-Centered Decision Support System)."
+
+
+--------------------------------------------------------------------------------
+📌 PERTANYAAN 3: KENAPA MEMILIH METODE HAVERSINE DISTANCE?
+--------------------------------------------------------------------------------
+PERTANYAAN PENGUJI:
+"Kenapa Anda menggunakan formula Haversine Distance, bukan rumus Euclidean atau
+Google Maps API Direction?"
+
+JAWABAN REKOMENDASI:
+"Izin menjawab Bapak/Ibu Penguji:
+
+1. Keunggulan Dibandingkan Euclidean Distance:
+   Rumus Euclidean mengasumsikan permukaan bumi sebagai bidang datar 2 dimensi,
+   sehingga menimbulkan distorsi kesalahan yang besar pada koordinat geografis.
+   Sebaliknya, Haversine Distance menggunakan trigonometri bola bumi sferis dengan
+   konstanta jari-jari bumi R = 6.371 km, sehingga akurat dan stabil untuk komputasi
+   jarak radius pendek.
+
+2. Efisiensi Dibandingkan Google Maps API Direction:
+   - Google Maps API Direction memiliki batasan kuota ketat dan skema berbayar per panggilan.
+     Jika sistem harus memanggil API rute untuk puluhan kos sekaligus secara berulang,
+     biaya layanan dan latensi jaringan akan melonjak drastis.
+   - Formula Haversine dieksekusi secara instan dan mandiri di backend Go (Golang)
+     tanpa biaya API pihak ketiga, sangat efisien untuk perankingan awal puluhan kos.
+   - Google Maps tetap kami integrasikan secara proporsional, yaitu hanya saat mahasiswa
+     telah memilih kos tertentu dan ingin membuka navigasi rute jalan."
+
+
+--------------------------------------------------------------------------------
+📌 PERTANYAAN 4: KENAPA MEMILIH METODE SAW DIBANDINGKAN AHP ATAU TOPSIS?
+--------------------------------------------------------------------------------
+PERTANYAAN PENGUJI:
+"Kenapa memilih metode SAW? Bukankah AHP atau TOPSIS lebih kompleks dan canggih?"
+
+JAWABAN REKOMENDASI:
+"Izin menjawab Bapak/Ibu Penguji:
+
+1. Efisiensi Waktu Komputasi Mobile:
+   Aplikasi ini ditargetkan berjalan cepat dan responsif pada perangkat smartphone.
+   SAW memiliki kompleksitas algoritma linier O(m × n) yang sangat ringan, tanpa perlu
+   iterasi matriks perbandingan berpasangan (pairwise comparison) seperti pada AHP
+   yang rentan menghasilkan rasio inkonsistensi (CR > 0.1) jika kriteria diubah oleh pengguna.
+
+2. Skalabilitas Terhadap Jumlah Alternatif Kos:
+   Jumlah alternatif kos di sekitar kampus dapat mencapai puluhan tempat. Metode AHP
+   sangat tidak praktis untuk membandingkan 30 alternatif secara berpasangan (membutuhkan
+   ratusan penilaian matriks). SAW mampu menormalisasi puluhan alternatif secara instan
+   dalam hitungan milidetik.
+
+3. Transparansi Klasifikasi Cost & Benefit:
+   SAW secara tegas memisahkan kriteria yang harus ditekan seminimal mungkin (Cost: Harga, Jarak)
+   dengan kriteria yang ingin diperoleh semaksimal mungkin (Benefit: Fasilitas, Luas,
+   Kebersihan, Keamanan) melalui formula normalisasi yang adil dan objektif."
+
+
+--------------------------------------------------------------------------------
+📌 PERTANYAAN 5: STANDARISASI SKALA: KENAPA HARGA & JARAK MENGGUNAKAN NILAI ASLI?
+--------------------------------------------------------------------------------
+PERTANYAAN PENGUJI:
+"Kriteria Fasilitas, Luas, Bersih, dan Aman menggunakan skala 1–5. Kenapa Harga Sewa (Rp)
+dan Jarak (meter) tidak dikonversi terlebih dahulu ke skala 1–5 sebelum dinormalkan?"
+
+JAWABAN REKOMENDASI:
+"Izin menjawab Bapak/Ibu Penguji. Kami sengaja mempertahankan Nilai Asli Kontinu
+(Continuous Value) untuk Harga Sewa (Rp) dan Jarak (meter) dengan dua alasan:
+
+1. Mencegah Hilangnya Presisi Informasi (Information Loss):
+   Jika jarak 350 meter dan 490 meter sama-sama dikonversi secara kasar ke dalam kelompok
+   skor 5 (misal kelompok < 500 meter = skor 5), maka keunggulan presisi formula
+   Haversine Distance akan hilang. Mahasiswa tidak dapat membedakan kos mana yang
+   secara faktual lebih dekat ke gerbang kampus.
+
+2. Kemampuan Matematis Formula Normalisasi SAW:
+   Metode SAW secara matematis dirancang untuk menyetarakan kriteria dengan satuan
+   yang berbeda (Multi-Attribute). Melalui rumus normalisasi Cost: Rij = Min(Xij) / Xij,
+   nominal jutaan rupiah (Harga) maupun ratusan meter (Jarak) secara otomatis
+   ditransformasikan ke dalam skala interval seragam 0 hingga 1.
+   Oleh karena itu, konversi ke skala diskrit 1–5 sebelum normalisasi justru menurunkan
+   akurasi perankingan sistem."
+
+
+--------------------------------------------------------------------------------
+📌 PERTANYAAN 6: KENAPA HANYA DIBATASI PADA 2 ROLE (MAHASISWA & ADMIN MOBILE)?
+--------------------------------------------------------------------------------
+PERTANYAAN PENGUJI:
+"Kenapa pengguna aplikasi ini hanya 2 Role (Mahasiswa & Admin)? Kenapa pemilik kos
+tidak diberi hak akses sendiri, dan kenapa tidak ada Web Dashboard?"
+
+JAWABAN REKOMENDASI:
+"Izin menjawab Bapak/Ibu Penguji:
+
+1. Menjaga Keaslian & Validitas Data (Anti-Fraud / Anti-Spam):
+   Jika pemilik kos diizinkan mendaftar dan menginputkan datanya secara mandiri tanpa verifikasi,
+   terdapat risiko subjektivitas promosi berlebihan (misal: mengklaim fasilitas lengkap padahal
+   tidak layak). Peran Administrator berfungsi sebagai kurator resmi yang memverifikasi
+   kondisi fisik, fasilitas, dan kebenaran titik koordinat GPS di lapangan.
+
+2. Batasan Ruang Lingkup Penelitian yang Terarah:
+   Fokus utama penelitian ini adalah rancang bangun dan pengujian algoritma (Haversine & SAW).
+   Pembatasan 2 role menjaga agar pengerjaan skripsi tetap fokus pada evaluasi metode
+   tanpa membengkak menjadi platform marketplace yang terlalu luas.
+
+3. Frontend Mobile Flutter Murni (Tanpa Web Dashboard):
+   Baik Mahasiswa maupun Admin dirancang menggunakan aplikasi mobile Flutter karena aktivitas
+   pencarian kos maupun survei/verifikasi lapangan sama-sama dilakukan secara dinamis di luar
+   ruangan menggunakan smartphone."
+
+
+--------------------------------------------------------------------------------
+📌 PERTANYAAN 7: BERAPA JUMLAH SAMPEL KOS DAN RESPONDEN KUESIONER YANG DIBUTUHKAN?
+--------------------------------------------------------------------------------
+PERTANYAAN PENGUJI:
+"Berapa jumlah sampel rumah kos dan responden mahasiswa yang Anda gunakan agar
+hasil penelitian ini absah secara metodologi?"
+
+JAWABAN REKOMENDASI:
+"Izin menjawab Bapak/Ibu Penguji:
+
+1. Sampel Responden Mahasiswa (Penentuan Bobot W):
+   Kami menargetkan minimal 30 hingga 50 responden mahasiswa aktif perantau IIB Darmajaya.
+   Berdasarkan Teorema Batas Pusat (Central Limit Theorem) dalam statistik inferensial,
+   sampel N ≥ 30 telah memenuhi syarat pendekatan distribusi normal guna menghasilkan
+   rata-rata bobot kepentingan kriteria (Wj) yang representatif.
+
+2. Sampel Alternatif Rumah Kos (Pengujian Sistem):
+   Kami menargetkan minimal 30 hingga 50 data rumah kos riil yang tersebar dalam
+   radius 1 hingga 3 kilometer dari kampus IIB Darmajaya. Jumlah ini sangat representatif
+   untuk menguji efektivitas perankingan algoritma SAW dan kestabilan perhitungan
+   Haversine Distance tanpa membebani memori penyimpanan perangkat mobile."
+
+
+--------------------------------------------------------------------------------
+📌 PERTANYAAN 8: BAGAIMANA SISTEM INI DIUJI KEBENARANNYA?
+--------------------------------------------------------------------------------
+PERTANYAAN PENGUJI:
+"Bagaimana Anda membuktikan bahwa perangkat lunak dan rumus yang Anda bangun
+sudah berjalan benar?"
+
+JAWABAN REKOMENDASI:
+"Izin menjawab Bapak/Ibu Penguji, pengujian dilakukan melalui dua tahapan:
+
+1. Black Box Testing (Pengujian Fungsionalitas Sistem):
+   Menguji seluruh fungsi operasional antarmuka (autentikasi login, input preferensi slider,
+   eksekusi backend, dan penampilan hasil perankingan) menggunakan teknik Boundary Value Analysis
+   dan Equivalence Partitioning (Subbab 3.8, Tabel 3.1) untuk memastikan sistem bebas dari bug.
+
+2. Validasi Akurasi Perhitungan (Sistem vs Manual Excel):
+   Membandingkan nilai skor preferensi akhir (Vi) yang dihasilkan oleh backend Go dengan
+   hasil perhitungan rumus manual di Microsoft Excel pada dataset yang sama.
+   Sistem dinyatakan valid secara ilmiah apabila urutan peringkat rekomendasi kos (1 sampai n)
+   terbukti identik 100% antara sistem dan perhitungan manual."
+
+
+--------------------------------------------------------------------------------
+📌 PERTANYAAN 9: APA KONTRIBUSI & MANFAAT PRAKTIS PENELITIAN INI?
+--------------------------------------------------------------------------------
+PERTANYAAN PENGUJI:
+"Apa keunggulan dan nilai manfaat nyata dari skripsi Anda ini dibandingkan survei manual
+atau aplikasi pencari kos yang sudah ada?"
+
+JAWABAN REKOMENDASI:
+"Izin menjawab Bapak/Ibu Penguji:
+1. Bagi Mahasiswa:
+   Menghemat waktu, tenaga, dan biaya survei fisik. Mahasiswa mendapatkan rekomendasi kos
+   terbaik yang disaring secara objektif berdasarkan radius jarak koordinat riil dan anggaran,
+   bukan berdasarkan promosi berbayar atau asumsi subjektif.
+2. Bagi Pemilik Kos:
+   Memperoleh media publikasi digital yang adil dan terstandarisasi untuk menjangkau
+   calon penghuni dari kalangan mahasiswa kampus.
+3. Bagi Akademisi / Peneliti:
+   Memberikan bukti empiris mengenai integrasi metode spasial GIS (Haversine Distance)
+   dengan metode SPK MADM (Simple Additive Weighting) pada platform mobile terdistribusi."
+
+================================================================================
+💡 TIPS EMAS MENGHADAPI PENGUJI SEMPRO:
+1. Tetap tenang, dengarkan pertanyaan hingga selesai, dan jangan memotong pembicaraan penguji.
+2. Awali setiap jawaban dengan kalimat santun: "Terima kasih atas pertanyaannya, Bapak/Ibu Penguji..."
+3. Tunjukkan penguasaan materi dengan merujuk nomor bab atau nomor gambar/tabel di naskah
+   (misal: "Sebagaimana telah kami rancang pada Wireframe Gambar 3.6...").
+4. Kuasai alur 7 langkah garis besar: Pengumpulan Data -> Haversine -> Matriks X -> Bobot W ->
+   Normalisasi R -> Skor Vi -> Peringkat Rekomendasi.
+================================================================================

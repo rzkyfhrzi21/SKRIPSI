@@ -1,0 +1,107 @@
+<mxfile host="Electron" modified="2026-10-23T14:30:00.000Z" agent="Hermes Agent" version="21.6.8" type="device">
+  <diagram id="act-v2" name="Activity Diagram Rekomendasi Kos v2">
+    <mxGraphModel dx="1422" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1654" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- HEADER -->
+        <mxCell id="hdr" value="&lt;b&gt;ACTIVITY DIAGRAM SISTEM REKOMENDASI KOS IIB DARMAJAYA&lt;/b&gt;&lt;br&gt;Aliran Proses Pencarian Kos Berdasarkan Integrasi Haversine Distance &amp; SAW" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0F766E;strokeColor=#0F766E;fontColor=#FFFFFF;fontSize=14;align=center;" vertex="1" parent="1">
+          <mxGeometry x="60" y="30" width="1050" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- SWIMLANE 1: MAHASISWA -->
+        <mxCell id="pool1" value="&lt;b&gt;Pengguna (Mahasiswa / Mobile App)&lt;/b&gt;" style="swimlane;startSize=30;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=2;fontColor=#1E40AF;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="60" y="100" width="350" height="850" as="geometry" />
+        </mxCell>
+        <mxCell id="start1" value="" style="ellipse;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="pool1">
+          <mxGeometry x="160" y="50" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="u_act1" value="Buka Aplikasi Mobile &amp;&lt;br&gt;Pilih Menu Rekomendasi" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#93C5FD;fontSize=11;" vertex="1" parent="pool1">
+          <mxGeometry x="85" y="110" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="u_act2" value="Atur Bobot Slider (1–5)&lt;br&gt;untuk 6 Kriteria Keputusan" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#93C5FD;fontSize=11;" vertex="1" parent="pool1">
+          <mxGeometry x="85" y="190" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="u_act3" value="Tekan Tombol&lt;br&gt;&quot;Cari Rekomendasi&quot;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#93C5FD;fontSize=11;" vertex="1" parent="pool1">
+          <mxGeometry x="85" y="270" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="u_act4" value="Tampilkan Kartu Hasil&lt;br&gt;Rekomendasi Terurut (Ranking)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#93C5FD;fontSize=11;" vertex="1" parent="pool1">
+          <mxGeometry x="85" y="690" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="u_act5" value="Pilih Kos &amp; Lihat Rute&lt;br&gt;Peta Google Maps" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#93C5FD;fontSize=11;" vertex="1" parent="pool1">
+          <mxGeometry x="85" y="765" width="180" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="end1" value="" style="ellipse;shape=doubleEllipse;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="pool1">
+          <mxGeometry x="160" y="830" width="30" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="u_e1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#64748B;strokeWidth=1.5;" edge="1" parent="pool1" source="start1" target="u_act1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="u_e2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#64748B;strokeWidth=1.5;" edge="1" parent="pool1" source="u_act1" target="u_act2"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="u_e3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#64748B;strokeWidth=1.5;" edge="1" parent="pool1" source="u_act2" target="u_act3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="u_e4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#64748B;strokeWidth=1.5;" edge="1" parent="pool1" source="u_act4" target="u_act5"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="u_e5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#64748B;strokeWidth=1.5;" edge="1" parent="pool1" source="u_act5" target="end1"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- SWIMLANE 2: BACKEND SERVER -->
+        <mxCell id="pool2" value="&lt;b&gt;Server Aplikasi (Backend Go REST API)&lt;/b&gt;" style="swimlane;startSize=30;fillColor=#ECFDF5;strokeColor=#10B981;strokeWidth=2;fontColor=#065F46;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="410" y="100" width="350" height="850" as="geometry" />
+        </mxCell>
+        <mxCell id="s_act1" value="Terima Parameter Bobot JSON&lt;br&gt;W = [w1..w6]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#A7F3D0;fontSize=11;" vertex="1" parent="pool2">
+          <mxGeometry x="85" y="270" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="s_act2" value="Kueri Pengambilan Data Kos&lt;br&gt;ke Basis Data" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#A7F3D0;fontSize=11;" vertex="1" parent="pool2">
+          <mxGeometry x="85" y="345" width="180" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="s_act3" value="Hitung Jarak Haversine&lt;br&gt;Kampus ke Alternatif Kos (d_i)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#A7F3D0;fontSize=11;" vertex="1" parent="pool2">
+          <mxGeometry x="85" y="475" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="s_act4" value="Injeksi Jarak &amp; Normalisasi&lt;br&gt;Matriks R SAW (Cost &amp; Benefit)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#A7F3D0;fontSize=11;" vertex="1" parent="pool2">
+          <mxGeometry x="85" y="545" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="s_act5" value="Kalkulasi Skor Preferensi V_i&lt;br&gt;&amp; Pengurutan Ranking (Sort Desc)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#A7F3D0;fontSize=11;" vertex="1" parent="pool2">
+          <mxGeometry x="85" y="615" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="s_act6" value="Kemas Hasil ke JSON Response&lt;br&gt;&amp; Kirim ke Aplikasi Mobile" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#A7F3D0;fontSize=11;" vertex="1" parent="pool2">
+          <mxGeometry x="85" y="690" width="180" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="s_e1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#64748B;strokeWidth=1.5;" edge="1" parent="pool2" source="s_act1" target="s_act2"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="s_e2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#64748B;strokeWidth=1.5;" edge="1" parent="pool2" source="s_act3" target="s_act4"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="s_e3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#64748B;strokeWidth=1.5;" edge="1" parent="pool2" source="s_act4" target="s_act5"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="s_e4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#64748B;strokeWidth=1.5;" edge="1" parent="pool2" source="s_act5" target="s_act6"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- SWIMLANE 3: DATABASE -->
+        <mxCell id="pool3" value="&lt;b&gt;Basis Data (MySQL Database)&lt;/b&gt;" style="swimlane;startSize=30;fillColor=#FFFBEB;strokeColor=#F59E0B;strokeWidth=2;fontColor=#92400E;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="760" y="100" width="350" height="850" as="geometry" />
+        </mxCell>
+        <mxCell id="db_act1" value="Proses Query SELECT Data Kos&lt;br&gt;&amp; Ambil Record Aktif" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FDE68A;fontSize=11;" vertex="1" parent="pool3">
+          <mxGeometry x="85" y="345" width="180" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="db_act2" value="Kembalikan Dataset Kos&lt;br&gt;(Harga, GPS, Fasilitas, dll)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FDE68A;fontSize=11;" vertex="1" parent="pool3">
+          <mxGeometry x="85" y="410" width="180" height="45" as="geometry" />
+        </mxCell>
+
+        <mxCell id="db_e1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#64748B;strokeWidth=1.5;" edge="1" parent="pool3" source="db_act1" target="db_act2"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- CROSS-SWIMLANE ARROWS -->
+        <!-- User -> Server -->
+        <mxCell id="c_u_s" value="HTTP POST Request" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#2563EB;strokeWidth=2;fontSize=10;fontStyle=1;fontColor=#1E40AF;" edge="1" parent="1" source="u_act3" target="s_act1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <!-- Server -> DB -->
+        <mxCell id="c_s_db" value="SELECT Query" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#0D9488;strokeWidth=2;fontSize=10;fontStyle=1;fontColor=#065F46;" edge="1" parent="1" source="s_act2" target="db_act1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <!-- DB -> Server -->
+        <mxCell id="c_db_s" value="Dataset Record" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#D97706;strokeWidth=2;fontSize=10;fontStyle=1;fontColor=#92400E;" edge="1" parent="1" source="db_act2" target="s_act3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <!-- Server -> User -->
+        <mxCell id="c_s_u" value="JSON Response Ranking" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#10B981;strokeWidth=2;fontSize=10;fontStyle=1;fontColor=#065F46;" edge="1" parent="1" source="s_act6" target="u_act4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

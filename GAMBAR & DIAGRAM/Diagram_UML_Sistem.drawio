@@ -1,0 +1,285 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" version="24.0.0">
+  
+  <diagram id="arch" name="Arsitektur Sistem">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        
+        <mxCell id="b_fe" value="&lt;b&gt;FRONTEND LAYER (MOBILE ANDROID)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#94A3B8;strokeWidth=1.5;strokeFactor=1;dashed=1;verticalAlign=top;align=left;spacingLeft=15;spacingTop=10;fontSize=12;fontColor=#0369A1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="280" height="480" as="geometry" />
+        </mxCell>
+        
+        
+        <mxCell id="b_be" value="&lt;b&gt;BACKEND SERVICES LAYER (GO)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAF5FF;strokeColor=#D8B4FE;strokeWidth=1.5;dashed=1;verticalAlign=top;align=left;spacingLeft=15;spacingTop=10;fontSize=12;fontColor=#6B21A8;" vertex="1" parent="1">
+          <mxGeometry x="380" y="40" width="320" height="480" as="geometry" />
+        </mxCell>
+        
+        
+        <mxCell id="b_ext" value="&lt;b&gt;DATA &amp;amp; EXTERNAL API LAYER&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#94A3B8;strokeWidth=1.5;dashed=1;verticalAlign=top;align=left;spacingLeft=15;spacingTop=10;fontSize=12;fontColor=#334155;" vertex="1" parent="1">
+          <mxGeometry x="760" y="40" width="280" height="480" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="mob_user" value="&lt;b&gt;Aplikasi Mobile Mahasiswa&lt;/b&gt;&lt;br&gt;&lt;i&gt;(Flutter / Android SDK)&lt;/i&gt;&lt;br&gt;&lt;div style=&quot;text-align: left;&quot;&gt;• Eksplorasi kos sekitar kampus&lt;br&gt;• Input preferensi bobot 6 kriteria&lt;br&gt;• Perangkingan rekomendasi kos&lt;br&gt;• Rute jalan via Google Maps&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#2563EB;strokeWidth=2;fontSize=11;fontColor=#1E293B;verticalAlign=top;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="60" y="80" width="240" height="180" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="mob_admin" value="&lt;b&gt;Aplikasi Mobile Administrator&lt;/b&gt;&lt;br&gt;&lt;i&gt;(Flutter / Mobile Dashboard)&lt;/i&gt;&lt;br&gt;&lt;div style=&quot;text-align: left;&quot;&gt;• Autentikasi login smartphone&lt;br&gt;• Manajemen data master kos&lt;br&gt;• Validasi koordinat GPS (Lat/Long)&lt;br&gt;• Sinkronisasi rekap kuesioner&lt;br&gt;• Konfigurasi default kriteria SAW&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F0FDF4;strokeColor=#16A34A;strokeWidth=2;fontSize=11;fontColor=#1E293B;verticalAlign=top;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="60" y="300" width="240" height="190" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="be_service" value="&lt;b&gt;Backend REST API Service (Go)&lt;/b&gt;&lt;br&gt;&lt;i&gt;(Gin Gonic / Native Go Service)&lt;/i&gt;&lt;br&gt;&lt;div style=&quot;text-align: left;&quot;&gt;• Router RESTful API &amp;amp; Handler JSON&lt;br&gt;• Middleware JWT Auth &amp;amp; CORS&lt;br&gt;• &lt;b&gt;Engine Haversine Distance&lt;/b&gt; (R: 6.371 km)&lt;br&gt;• &lt;b&gt;Engine SAW:&lt;/b&gt;&lt;br&gt;  - Normalisasi Cost &amp;amp; Benefit&lt;br&gt;  - Nilai Preferensi Vi = Σ(wj * rij)&lt;br&gt;• Sorting Descending Peringkat Kos&lt;br&gt;• JSON Response Serialization&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAF5FF;strokeColor=#7C3AED;strokeWidth=2;fontSize=11;fontColor=#1E293B;verticalAlign=top;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="405" y="80" width="270" height="410" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="maps_api" value="&lt;b&gt;Google Maps Platform API&lt;/b&gt;&lt;br&gt;&lt;i&gt;(Cloud Geolocation Service)&lt;/i&gt;&lt;br&gt;&lt;div style=&quot;text-align: left;&quot;&gt;• Geocoding &amp;amp; Reverse Geocoding&lt;br&gt;• Validasi titik bujur &amp;amp; lintang&lt;br&gt;• Direction Navigation URL&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFBEB;strokeColor=#D97706;strokeWidth=2;fontSize=11;fontColor=#1E293B;verticalAlign=top;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="785" y="80" width="230" height="160" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="db_mysql" value="&lt;b&gt;Database MySQL&lt;/b&gt;&lt;br&gt;&lt;i&gt;(Relational Database / Port 3306)&lt;/i&gt;&lt;br&gt;&lt;div style=&quot;text-align: left;&quot;&gt;• &lt;b&gt;tb_pengguna&lt;/b&gt; (Admin auth)&lt;br&gt;• &lt;b&gt;tb_kos&lt;/b&gt; (Master data &amp;amp; GPS)&lt;br&gt;• &lt;b&gt;tb_kriteria&lt;/b&gt; (6 Kriteria SAW)&lt;br&gt;• &lt;b&gt;tb_bobot&lt;/b&gt; (Bobot kriteria)&lt;br&gt;• &lt;b&gt;tb_penilaian&lt;/b&gt; (Rating kuesioner)&lt;br&gt;• &lt;b&gt;tb_rekomendasi&lt;/b&gt; (Log hasil Vi)&lt;/div&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#F8FAFC;strokeColor=#334155;strokeWidth=2;fontSize=11;fontColor=#1E293B;verticalAlign=top;spacingTop=12;" vertex="1" parent="1">
+          <mxGeometry x="785" y="270" width="230" height="220" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="edge_user_be" value="&lt;b&gt;JSON / HTTPS&lt;/b&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563EB;strokeWidth=2.2;endArrow=classic;startArrow=classic;fontSize=10;fontColor=#1E40AF;" edge="1" parent="1" source="mob_user" target="be_service">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_admin_be" value="&lt;b&gt;JSON / Auth&lt;/b&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#16A34A;strokeWidth=2.2;endArrow=classic;startArrow=classic;fontSize=10;fontColor=#166534;" edge="1" parent="1" source="mob_admin" target="be_service">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_be_maps" value="&lt;b&gt;Spatial API&lt;/b&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#D97706;strokeWidth=2.2;endArrow=classic;startArrow=classic;fontSize=10;fontColor=#92400E;" edge="1" parent="1" source="be_service" target="maps_api">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_be_db" value="&lt;b&gt;TCP 3306 (SQL)&lt;/b&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#334155;strokeWidth=2.2;endArrow=classic;startArrow=classic;fontSize=10;fontColor=#1E293B;" edge="1" parent="1" source="be_service" target="db_mysql">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+
+  
+  <diagram id="usecase" name="Use Case Diagram">
+    <mxGraphModel dx="1000" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="sys_box" value="&lt;b&gt;Sistem Rekomendasi Kos (Haversine &amp;amp; SAW)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#475569;strokeWidth=2;verticalAlign=top;align=center;spacingTop=12;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="190" y="40" width="440" height="540" as="geometry" />
+        </mxCell>
+        <mxCell id="act_mhs" value="Mahasiswa" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#EFF6FF;strokeColor=#2563EB;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="60" y="210" width="40" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="act_adm" value="Administrator" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#F0FDF4;strokeColor=#16A34A;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="720" y="210" width="40" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="uc1" value="Jelajah &amp;amp; Cari Kos" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#2563EB;strokeWidth=1.5;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="240" y="80" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="uc2" value="Atur Bobot 6 Kriteria" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#2563EB;strokeWidth=1.5;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="240" y="160" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="uc3" value="Hitung Rekomendasi&lt;br&gt;(Haversine &amp;amp; SAW)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FAF5FF;strokeColor=#7C3AED;strokeWidth=2;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="240" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="uc4" value="Lihat Peringkat &amp;amp; Rute Maps" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#2563EB;strokeWidth=1.5;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="240" y="330" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="uc5" value="Autentikasi Login Mobile" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#16A34A;strokeWidth=1.5;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="420" y="110" width="170" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="uc6" value="Kelola Data Master Kos" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#16A34A;strokeWidth=1.5;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="420" y="380" width="170" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="uc7" value="Validasi Koordinat GPS" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#16A34A;strokeWidth=1.5;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="420" y="470" width="170" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="e_m1" style="endArrow=none;html=1;strokeColor=#2563EB;strokeWidth=1.5;" edge="1" parent="1" source="act_mhs" target="uc1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_m2" style="endArrow=none;html=1;strokeColor=#2563EB;strokeWidth=1.5;" edge="1" parent="1" source="act_mhs" target="uc2"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_m3" style="endArrow=none;html=1;strokeColor=#7C3AED;strokeWidth=2;" edge="1" parent="1" source="act_mhs" target="uc3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_m4" style="endArrow=none;html=1;strokeColor=#2563EB;strokeWidth=1.5;" edge="1" parent="1" source="act_mhs" target="uc4"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_a1" style="endArrow=none;html=1;strokeColor=#16A34A;strokeWidth=1.5;" edge="1" parent="1" source="act_adm" target="uc5"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_a2" style="endArrow=none;html=1;strokeColor=#16A34A;strokeWidth=1.5;" edge="1" parent="1" source="act_adm" target="uc6"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_a3" style="endArrow=none;html=1;strokeColor=#16A34A;strokeWidth=1.5;" edge="1" parent="1" source="act_adm" target="uc7"><mxGeometry relative="1" as="geometry" /></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+
+  
+  <diagram id="activity" name="Activity Diagram">
+    <mxGraphModel dx="1000" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <mxCell id="lane_mhs" value="&lt;b&gt;Mahasiswa (Aplikasi Mobile)&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;startSize=30;fillColor=#EFF6FF;strokeColor=#2563EB;strokeWidth=1.5;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="340" height="860" as="geometry" />
+        </mxCell>
+        <mxCell id="start_node" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1E293B;strokeColor=#1E293B;" vertex="1" parent="lane_mhs">
+          <mxGeometry x="155" y="50" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="act1" value="Membuka Menu Rekomendasi Kos" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2563EB;strokeWidth=1.5;fontSize=11;" vertex="1" parent="lane_mhs">
+          <mxGeometry x="70" y="110" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="act2" value="Input Nilai Bobot 6 Kriteria (1–5)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2563EB;strokeWidth=1.5;fontSize=11;" vertex="1" parent="lane_mhs">
+          <mxGeometry x="70" y="180" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="act3" value="Kirim Request HTTP POST Rekomendasi" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2563EB;strokeWidth=1.5;fontSize=11;" vertex="1" parent="lane_mhs">
+          <mxGeometry x="70" y="250" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="act9" value="Render Kartu Peringkat Rekomendasi" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2563EB;strokeWidth=1.5;fontSize=11;" vertex="1" parent="lane_mhs">
+          <mxGeometry x="70" y="690" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="act10" value="Buka Rute Arah Navigasi Google Maps" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2563EB;strokeWidth=1.5;fontSize=11;" vertex="1" parent="lane_mhs">
+          <mxGeometry x="70" y="760" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="end_node" value="" style="ellipse;shape=doubleEllipse;whiteSpace=wrap;html=1;fillColor=#1E293B;strokeColor=#1E293B;strokeWidth=2;" vertex="1" parent="lane_mhs">
+          <mxGeometry x="155" y="820" width="30" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="lane_sys" value="&lt;b&gt;Sistem Backend (Go &amp;amp; MySQL)&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;startSize=30;fillColor=#FAF5FF;strokeColor=#7C3AED;strokeWidth=1.5;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="380" y="40" width="380" height="860" as="geometry" />
+        </mxCell>
+        <mxCell id="act4" value="Ambil Data Koordinat &amp;amp; Skor Kos MySQL" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#7C3AED;strokeWidth=1.5;fontSize=11;" vertex="1" parent="lane_sys">
+          <mxGeometry x="80" y="250" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="act5" value="Hitung Haversine Distance ke Kampus" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#7C3AED;strokeWidth=1.5;fontSize=11;" vertex="1" parent="lane_sys">
+          <mxGeometry x="80" y="320" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="act6" value="Susun Matriks Keputusan X" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#7C3AED;strokeWidth=1.5;fontSize=11;" vertex="1" parent="lane_sys">
+          <mxGeometry x="80" y="390" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="dec_saw" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#D97706;strokeWidth=1.5;" vertex="1" parent="lane_sys">
+          <mxGeometry x="170" y="460" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="norm_cost" value="rij = min(xij) / xij&lt;br&gt;&lt;i&gt;(Cost)&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D97706;fontSize=10;" vertex="1" parent="lane_sys">
+          <mxGeometry x="30" y="520" width="130" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="norm_ben" value="rij = xij / max(xij)&lt;br&gt;&lt;i&gt;(Benefit)&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#16A34A;fontSize=10;" vertex="1" parent="lane_sys">
+          <mxGeometry x="220" y="520" width="130" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="merge_saw" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#64748B;strokeWidth=1.5;" vertex="1" parent="lane_sys">
+          <mxGeometry x="175" y="580" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="act7" value="Hitung Nilai Preferensi Vi = Σ(wj * rij)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#7C3AED;strokeWidth=1.5;fontSize=11;" vertex="1" parent="lane_sys">
+          <mxGeometry x="80" y="630" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="act8" value="Sorting Descending &amp;amp; Format JSON" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#7C3AED;strokeWidth=1.5;fontSize=11;" vertex="1" parent="lane_sys">
+          <mxGeometry x="80" y="690" width="220" height="40" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="f1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#334155;strokeWidth=1.5;endArrow=classic;" edge="1" parent="1" source="start_node" target="act1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#334155;strokeWidth=1.5;endArrow=classic;" edge="1" parent="1" source="act1" target="act2"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#334155;strokeWidth=1.5;endArrow=classic;" edge="1" parent="1" source="act2" target="act3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f4" value="HTTP POST" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2563EB;strokeWidth=2;endArrow=classic;fontSize=10;fontColor=#1E40AF;" edge="1" parent="1" source="act3" target="act4"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#334155;strokeWidth=1.5;endArrow=classic;" edge="1" parent="1" source="act4" target="act5"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#334155;strokeWidth=1.5;endArrow=classic;" edge="1" parent="1" source="act5" target="act6"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#334155;strokeWidth=1.5;endArrow=classic;" edge="1" parent="1" source="act6" target="dec_saw"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f_cost" value="[Cost]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#D97706;strokeWidth=1.5;endArrow=classic;fontSize=9;" edge="1" parent="1" source="dec_saw" target="norm_cost"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f_ben" value="[Benefit]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#16A34A;strokeWidth=1.5;endArrow=classic;fontSize=9;" edge="1" parent="1" source="dec_saw" target="norm_ben"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f_m1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#334155;strokeWidth=1.5;endArrow=classic;" edge="1" parent="1" source="norm_cost" target="merge_saw"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f_m2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#334155;strokeWidth=1.5;endArrow=classic;" edge="1" parent="1" source="norm_ben" target="merge_saw"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#334155;strokeWidth=1.5;endArrow=classic;" edge="1" parent="1" source="merge_saw" target="act7"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#334155;strokeWidth=1.5;endArrow=classic;" edge="1" parent="1" source="act7" target="act8"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f10" value="HTTP JSON" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#7C3AED;strokeWidth=2;endArrow=classic;fontSize=10;fontColor=#6B21A8;" edge="1" parent="1" source="act8" target="act9"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#334155;strokeWidth=1.5;endArrow=classic;" edge="1" parent="1" source="act9" target="act10"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#334155;strokeWidth=1.5;endArrow=classic;" edge="1" parent="1" source="act10" target="end_node"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+<diagram id="pipeline" name="Alur Integrasi Dua Algoritma">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        
+        <mxCell id="title" value="&lt;b style='font-size:16px;'&gt;PIPELINE INTEGRASI KOMPUTASI ALGORITMA HAVERSINE DISTANCE DAN SIMPLE ADDITIVE WEIGHTING (SAW)&lt;/b&gt;&lt;br&gt;&lt;span style='font-size:12px;color:#64748B;'&gt;Sistem Rekomendasi Tempat Kos Berbasis Mobile Android - Kasus Institut Informatika dan Bisnis Darmajaya&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#CBD5E1;strokeWidth=1.5;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="747" height="60" as="geometry" />
+        </mxCell>
+        
+        
+        <mxCell id="step1_header" value="&lt;b&gt;TAHAP 1: INPUT DATA KOORDINAT GEOGRAFIS (SPASIAL)&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#1E293B;" vertex="1" parent="1">
+          <mxGeometry x="150" y="110" width="527" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="box_input_kampus" value="&lt;b style='color:#0F172A;'&gt;Titik Acuan Kampus IIB Darmajaya&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:11px;color:#334155;'&gt;Gerbang Utama:&lt;br&gt;Latitude (&amp;phi;&lt;sub&gt;1&lt;/sub&gt;) = -5.3789&amp;deg;&lt;br&gt;Longitude (&amp;lambda;&lt;sub&gt;1&lt;/sub&gt;) = 105.2538&amp;deg;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=1.5;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="80" y="140" width="280" height="75" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="box_input_kos" value="&lt;b style='color:#0F172A;'&gt;Titik Alternatif Rumah Kos (A&lt;sub&gt;i&lt;/sub&gt;)&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:11px;color:#334155;'&gt;Reverse Geolocation Google Maps:&lt;br&gt;Latitude (&amp;phi;&lt;sub&gt;2,i&lt;/sub&gt;) &amp;amp; Longitude (&amp;lambda;&lt;sub&gt;2,i&lt;/sub&gt;)&lt;br&gt;Radius Pengamatan: 1 &amp;ndash; 3 km&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=1.5;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="467" y="140" width="280" height="75" as="geometry" />
+        </mxCell>
+        
+        
+        <mxCell id="arr_in1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.25;entryY=0;entryDx=0;entryDy=0;strokeColor=#2563EB;strokeWidth=2;" edge="1" parent="1" source="box_input_kampus" target="box_haversine">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_in2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.75;entryY=0;entryDx=0;entryDy=0;strokeColor=#2563EB;strokeWidth=2;" edge="1" parent="1" source="box_input_kos" target="box_haversine">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        
+        <mxCell id="box_haversine" value="&lt;b style='font-size:13px;color:#1E3A8A;'&gt;MESIN KOMPUTASI SPASIAL: HAVERSINE DISTANCE&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:11px;color:#1E293B;'&gt;&lt;b&gt;1.&lt;/b&gt; Konversi Derajat ke Radian: &amp;Delta;&amp;phi; = (&amp;phi;&lt;sub&gt;2,i&lt;/sub&gt; - &amp;phi;&lt;sub&gt;1&lt;/sub&gt;) &amp;times; &amp;pi;/180&amp;deg;, &amp;Delta;&amp;lambda; = (&amp;lambda;&lt;sub&gt;2,i&lt;/sub&gt; - &amp;lambda;&lt;sub&gt;1&lt;/sub&gt;) &amp;times; &amp;pi;/180&amp;deg;&lt;br&gt;&lt;b&gt;2.&lt;/b&gt; Hitung Kuadrat Setengah Tali Busur: &lt;i&gt;a&lt;/i&gt; = sin&amp;sup2;(&amp;Delta;&amp;phi;/2) + cos(&amp;phi;&lt;sub&gt;1&lt;/sub&gt;) &amp;middot; cos(&amp;phi;&lt;sub&gt;2,i&lt;/sub&gt;) &amp;middot; sin&amp;sup2;(&amp;Delta;&amp;lambda;/2)&lt;br&gt;&lt;b&gt;3.&lt;/b&gt; Hitung Sudut Kelengkungan Sferis: &lt;i&gt;c&lt;/i&gt; = 2 &amp;middot; atan2(&amp;radic;a, &amp;radic;(1 - a))&lt;br&gt;&lt;b&gt;4.&lt;/b&gt; Jarak Permukaan Lengkung Bumi: &lt;b style='color:#1E40AF;'&gt;d&lt;sub&gt;i&lt;/sub&gt; = R &amp;times; c&lt;/b&gt; (Konstanta R = 6.371.000 meter)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#1D4ED8;strokeWidth=2;align=center;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="80" y="250" width="667" height="110" as="geometry" />
+        </mxCell>
+        
+        
+        <mxCell id="arr_bridge" value="&lt;b style='color:#1E40AF;background-color:#FFFFFF;'&gt;Output Haversine: Jarak Garis Lurus (d&lt;sub&gt;i&lt;/sub&gt;) dlm Meter&lt;/b&gt;&lt;br&gt;&lt;span style='color:#475569;font-size:10px;background-color:#FFFFFF;'&gt;(Dialirkan menjadi Input Kriteria C&lt;sub&gt;2&lt;/sub&gt; SAW)&lt;/span&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#1D4ED8;strokeWidth=2.5;labelBackgroundColor=none;" edge="1" parent="1" source="box_haversine" target="box_bridge_group">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        
+        <mxCell id="box_bridge_group" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#94A3B8;strokeWidth=1.5;dashed=1;align=center;verticalAlign=top;spacingTop=6;" vertex="1" parent="1">
+          <mxGeometry x="40" y="410" width="747" height="130" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="lbl_group_criteria" value="&lt;b&gt;PEMBENTUKAN MATRIKS KEPUTUSAN X (m Alternatif &amp;times; 6 Kriteria) &amp;amp; VEKTOR BOBOT W&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor:#334155;" vertex="1" parent="1">
+          <mxGeometry x="100" y="415" width="627" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="box_c2" value="&lt;b style='color:#047857;'&gt;Kriteria C&lt;sub&gt;2&lt;/sub&gt;: Jarak ke Kampus&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:10px;color:#065F46;'&gt;&lt;b&gt;Input dari Output Haversine (d&lt;sub&gt;i&lt;/sub&gt;)&lt;/b&gt;&lt;br&gt;Sifat Atribut: &lt;b&gt;COST (Biaya)&lt;/b&gt;&lt;br&gt;Satuan: Meter (Nilai Asli Riil)&lt;br&gt;Logika: Semakin kecil semakin baik&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D1FAE5;strokeColor=#059669;strokeWidth=1.5;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="60" y="445" width="220" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="box_c_other" value="&lt;b style='color:#0F172A;'&gt;Kriteria Lainnya (C&lt;sub&gt;1&lt;/sub&gt;, C&lt;sub&gt;3&lt;/sub&gt;, C&lt;sub&gt;4&lt;/sub&gt;, C&lt;sub&gt;5&lt;/sub&gt;, C&lt;sub&gt;6&lt;/sub&gt;)&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:10px;color:#334155;'&gt;&amp;bull; C&lt;sub&gt;1&lt;/sub&gt; Harga Sewa/Tahun (Cost &amp;ndash; Rp)&lt;br&gt;&amp;bull; C&lt;sub&gt;3&lt;/sub&gt; Fasilitas Kamar (Benefit &amp;ndash; Skala 1&amp;ndash;5)&lt;br&gt;&amp;bull; C&lt;sub&gt;4&lt;/sub&gt; Luas Kamar (Benefit &amp;ndash; Skala 1&amp;ndash;5)&lt;br&gt;&amp;bull; C&lt;sub&gt;5&lt;/sub&gt; Kebersihan (Benefit &amp;ndash; Skala 1&amp;ndash;5)&lt;br&gt;&amp;bull; C&lt;sub&gt;6&lt;/sub&gt; Keamanan (Benefit &amp;ndash; Skala 1&amp;ndash;5)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#64748B;strokeWidth=1.5;align=left;verticalAlign=middle;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="300" y="445" width="240" height="80" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="box_weights" value="&lt;b style='color:#92400E;'&gt;Vektor Bobot W&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:10px;color:#78350F;'&gt;W = [w&lt;sub&gt;1&lt;/sub&gt;, w&lt;sub&gt;2&lt;/sub&gt;, w&lt;sub&gt;3&lt;/sub&gt;, w&lt;sub&gt;4&lt;/sub&gt;, w&lt;sub&gt;5&lt;/sub&gt;, w&lt;sub&gt;6&lt;/sub&gt;]&lt;br&gt;&amp;sum; w&lt;sub&gt;j&lt;/sub&gt; = 1.00 (100%)&lt;br&gt;Sumber: Rata-rata survei kuesioner mahasiswa / slider preferensi dinamis&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#D97706;strokeWidth=1.5;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="560" y="445" width="207" height="80" as="geometry" />
+        </mxCell>
+        
+        
+        <mxCell id="arr_to_saw" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#059669;strokeWidth=2.5;" edge="1" parent="1" source="box_bridge_group" target="box_saw">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        
+        <mxCell id="box_saw" value="&lt;b style='font-size:13px;color:#065F46;'&gt;MESIN MULTIKRITERIA: SIMPLE ADDITIVE WEIGHTING (SAW)&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:11px;color:#1E293B;'&gt;&lt;b&gt;1. Normalisasi Matriks Keputusan (R):&lt;/b&gt;&lt;br&gt;&amp;bull; Kriteria Cost (C&lt;sub&gt;1&lt;/sub&gt; &amp;amp; C&lt;sub&gt;2&lt;/sub&gt;): &lt;b style='color:#B91C1C;'&gt;R&lt;sub&gt;ij&lt;/sub&gt; = min&lt;sub&gt;i&lt;/sub&gt;(X&lt;sub&gt;ij&lt;/sub&gt;) / X&lt;sub&gt;ij&lt;/sub&gt;&lt;/b&gt; (Nilai terkecil dibagi nilai asli)&lt;br&gt;&amp;bull; Kriteria Benefit (C&lt;sub&gt;3&lt;/sub&gt;, C&lt;sub&gt;4&lt;/sub&gt;, C&lt;sub&gt;5&lt;/sub&gt;, C&lt;sub&gt;6&lt;/sub&gt;): &lt;b style='color:#047857;'&gt;R&lt;sub&gt;ij&lt;/sub&gt; = X&lt;sub&gt;ij&lt;/sub&gt; / max&lt;sub&gt;i&lt;/sub&gt;(X&lt;sub&gt;ij&lt;/sub&gt;)&lt;/b&gt; (Nilai asli dibagi nilai terbesar)&lt;br&gt;&lt;b&gt;2. Akumulasi Perkalian Terbobot (Skor Preferensi):&lt;/b&gt;&lt;br&gt;&lt;b style='color:#065F46;font-size:12px;'&gt;V&lt;sub&gt;i&lt;/sub&gt; = &amp;sum;&lt;sub&gt;j=1..6&lt;/sub&gt; (w&lt;sub&gt;j&lt;/sub&gt; &amp;times; R&lt;sub&gt;ij&lt;/sub&gt;)&lt;/b&gt; (Rentang indeks 0.00 &amp;le; V&lt;sub&gt;i&lt;/sub&gt; &amp;le; 1.00)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#059669;strokeWidth=2;align=center;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="80" y="580" width="667" height="120" as="geometry" />
+        </mxCell>
+        
+        
+        <mxCell id="arr_to_rank" value="&lt;b style='color:#065F46;background-color:#FFFFFF;'&gt;Output SAW: Indeks Preferensi V&lt;sub&gt;i&lt;/sub&gt;&lt;/b&gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#059669;strokeWidth=2.5;labelBackgroundColor=none;" edge="1" parent="1" source="box_saw" target="box_ranking">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        
+        <mxCell id="box_ranking" value="&lt;b style='font-size:13px;color:#78350F;'&gt;HASIL PERANGKINGAN &amp;amp; REKOMENDASI PADA APLIKASI MOBILE&lt;/b&gt;&lt;br&gt;&lt;font style='font-size:11px;color:#451A03;'&gt;&amp;bull; Pengurutan Alternatif Kos dari Skor V&lt;sub&gt;i&lt;/sub&gt; Terbesar ke Terkecil (Rank 1 s.d. m)&lt;br&gt;&amp;bull; Kos dengan Skor Tertinggi (&lt;b&gt;Rank 1&lt;/b&gt;) ditandai sebagai &lt;b style='color:#15803D;'&gt;&amp;#129351; Rekomendasi Utama (Terbaik)&lt;/b&gt;&lt;br&gt;&amp;bull; Ditampilkan pada Layar Mobile Flutter Mahasiswa beserta Kartu Rekomendasi, Detail Fasilitas, dan Rute Peta Google Maps&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF9C3;strokeColor=#CA8A04;strokeWidth=2;align=center;verticalAlign=middle;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="80" y="740" width="667" height="80" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

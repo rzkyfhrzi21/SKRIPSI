@@ -1,0 +1,25 @@
+<mxfile host="app.diagrams.net" version="24.0.0">
+  <diagram id="wireframes" name="Wireframe Antarmuka">
+    <mxGraphModel dx="1000" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="p1" value="&lt;b&gt;Mobile: Beranda &amp;amp; Cari&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0F172A;strokeWidth=2;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="50" y="80" width="180" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="p2" value="&lt;b&gt;Mobile: Input Bobot SAW&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0F172A;strokeWidth=2;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="260" y="80" width="180" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="p3" value="&lt;b&gt;Mobile: Hasil Ranking&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0F172A;strokeWidth=2;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="470" y="80" width="180" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="p4" value="&lt;b&gt;Mobile: Detail &amp;amp; Rute Maps&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0F172A;strokeWidth=2;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="680" y="80" width="180" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="w1" value="&lt;b&gt;Web Dashboard: Login Admin &amp;amp; Manajemen Master Data Kos&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#334155;strokeWidth=2;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="50" y="430" width="810" height="280" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

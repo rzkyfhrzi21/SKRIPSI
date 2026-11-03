@@ -1,0 +1,62 @@
+<mxfile host="Electron" modified="2026-10-23T14:00:00.000Z" agent="Hermes Agent" version="21.6.8" type="device">
+  <diagram id="pipeline-v2" name="Pipeline Integrasi Haversine dan SAW v2">
+    <mxGraphModel dx="1422" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1654" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- HEADER -->
+        <mxCell id="hdr" value="&lt;b&gt;PIPELINE INTEGRASI ALGORITMA HAVERSINE DISTANCE DAN SIMPLE ADDITIVE WEIGHTING (SAW)&lt;/b&gt;&lt;br&gt;Sistem Rekomendasi Kos Mahasiswa IIB Darmajaya" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1E3A8A;strokeColor=#1E3A8A;fontColor=#FFFFFF;fontSize=15;align=center;" vertex="1" parent="1">
+          <mxGeometry x="100" y="40" width="970" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- TAHAP 1: INPUT DATA -->
+        <mxCell id="step1" value="&lt;b&gt;TAHAP 1: INPUT DATA &amp; PREFERENSI MAHASISWA&lt;/b&gt;&lt;br&gt;&lt;div align=&quot;left&quot;&gt;• Titik Gerbang Utama Kampus IIB Darmajaya: (-5.3789° LS, 105.2538° BT)&lt;br&gt;• Titik Riil Koordinat Kos: (Lat_i, Lon_i) dari basis data MySQL&lt;br&gt;• Spesifikasi 6 Atribut Kos: Harga (C1), Fasilitas (C3), Luas (C4), Kebersihan (C5), Keamanan (C6)&lt;br&gt;• Vektor Bobot Preferensi Pengguna: W = [w1, w2, w3, w4, w5, w6] (Slider 1–5)&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=2;fontSize=12;align=left;spacingLeft=15;" vertex="1" parent="1">
+          <mxGeometry x="100" y="140" width="970" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- ARROW 1 -->
+        <mxCell id="arr1" value="Data Koordinat Spasial (Latitude, Longitude)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#2563EB;strokeWidth=2;fontSize=11;fontStyle=1;fontColor=#1E40AF;" edge="1" parent="1" source="step1" target="step2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- TAHAP 2: HAVERSINE DISTANCE -->
+        <mxCell id="step2" value="&lt;b&gt;TAHAP 2: METODE HAVERSINE DISTANCE (KOMPUTASI SPASIAL GEOGRAFIS)&lt;/b&gt;&lt;br&gt;&lt;div align=&quot;left&quot;&gt;• Konversi Derajat ke Radian: &amp;Delta;&amp;phi; = &amp;phi;2 - &amp;phi;1, &amp;Delta;&amp;lambda; = &amp;lambda;2 - &amp;lambda;1&lt;br&gt;• Haversine Formula: a = sin²(&amp;Delta;&amp;phi;/2) + cos(&amp;phi;1) &#183; cos(&amp;phi;2) &#183; sin²(&amp;Delta;&amp;lambda;/2)&lt;br&gt;• Sudut Busur Bola Bumi: c = 2 &#183; atan2(&amp;radic;a, &amp;radic;(1-a))&lt;br&gt;• Jarak Lingkaran Besar: &lt;b&gt;d_i = R &#183; c&lt;/b&gt; (R = 6.371.000 meter)&lt;br&gt;&lt;i&gt;Luaran: Jarak presisi garis lurus (d_i) dari kampus IIB Darmajaya ke rumah kos ke-i&lt;/i&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAF5FF;strokeColor=#8B5CF6;strokeWidth=2;fontSize=12;align=left;spacingLeft=15;" vertex="1" parent="1">
+          <mxGeometry x="100" y="270" width="970" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- ARROW 2 -->
+        <mxCell id="arr2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#8B5CF6;strokeWidth=2;" edge="1" parent="1" source="step2" target="bridge">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- TITIK INTEGRASI PIPELINE -->
+        <mxCell id="bridge" value="&lt;b&gt;TITIK INTEGRASI PIPELINE: INJEKSI OTOMATIS JARAK KE KRITERIA C2&lt;/b&gt;&lt;br&gt;Nilai jarak spasial (d_i) hasil kalkulasi Haversine secara instan disuntikkan menjadi nilai kriteria Jarak (C2 / Sifat Cost) pada baris alternatif matriks keputusan SAW" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;strokeWidth=3;fontColor=#78350F;fontSize=12;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="100" y="420" width="970" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- ARROW 3 -->
+        <mxCell id="arr3" value="Matriks Keputusan Lengkap X (m x 6)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#D97706;strokeWidth=2;fontSize=11;fontStyle=1;fontColor=#92400E;" edge="1" parent="1" source="bridge" target="step3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- TAHAP 3: SIMPLE ADDITIVE WEIGHTING (SAW) -->
+        <mxCell id="step3" value="&lt;b&gt;TAHAP 3: METODE SIMPLE ADDITIVE WEIGHTING (SAW / MCDM ENGINE)&lt;/b&gt;&lt;br&gt;&lt;div align=&quot;left&quot;&gt;• &lt;b&gt;Pembentukan Matriks X (m &#215; 6):&lt;/b&gt; Alternatif Kos &#215; Kriteria [C1: Harga, C2: Jarak Haversine, C3: Fasilitas, C4: Luas, C5: Kebersihan, C6: Keamanan]&lt;br&gt;• &lt;b&gt;Normalisasi Matriks R:&lt;/b&gt;&lt;br&gt;&amp;nbsp;&amp;nbsp;- Kriteria Biaya (Cost - C1, C2): r_ij = min(x_ij) / x_ij (Nilai semakin kecil semakin baik)&lt;br&gt;&amp;nbsp;&amp;nbsp;- Kriteria Keuntungan (Benefit - C3 s.d. C6): r_ij = x_ij / max(x_ij) (Nilai semakin besar semakin baik)&lt;br&gt;• &lt;b&gt;Penjumlahan Terbobot (Skor Preferensi V_i):&lt;/b&gt; V_i = &amp;Sigma; (w_j &#183; r_ij)&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFBEB;strokeColor=#F59E0B;strokeWidth=2;fontSize=12;align=left;spacingLeft=15;" vertex="1" parent="1">
+          <mxGeometry x="100" y="520" width="970" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- ARROW 4 -->
+        <mxCell id="arr4" value="Vektor Nilai Preferensi V_i (Skor 0 s.d. 1)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#059669;strokeWidth=2;fontSize=11;fontStyle=1;fontColor=#065F46;" edge="1" parent="1" source="step3" target="step4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- TAHAP 4: OUTPUT REKOMENDASI -->
+        <mxCell id="step4" value="&lt;b&gt;TAHAP 4: OUTPUT REKOMENDASI TERURUT PADA MOBILE MAHASISWA&lt;/b&gt;&lt;br&gt;&lt;div align=&quot;left&quot;&gt;• Pengurutan Skor Tertinggi (Sorting Descending): Peringkat 1 s.d. m&lt;br&gt;• Visualisasi Hasil: Kartu Rekomendasi Kos, Nilai Skor Akhir, Jarak Spasial, Tarif Sewa, &amp; Tautan Rute Navigasi Google Maps&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#10B981;strokeWidth=2;fontSize=12;align=left;spacingLeft=15;" vertex="1" parent="1">
+          <mxGeometry x="100" y="680" width="970" height="80" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
+

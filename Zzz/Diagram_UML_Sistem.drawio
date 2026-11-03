@@ -1,0 +1,37 @@
+<mxfile host="app.diagrams.net" version="24.0.0">
+  <diagram id="arch" name="Arsitektur Sistem">
+    <mxGraphModel dx="1000" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="mob" value="&lt;b&gt;Mobile Client (Flutter/Dart)&lt;/b&gt;&lt;br&gt;- Aktor Mahasiswa&lt;br&gt;- Input Preferensi Bobot 6 Kriteria&lt;br&gt;- Tampilan Peringkat Rekomendasi&lt;br&gt;- Integrasi Google Maps Direction" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#1D4ED8;strokeWidth=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="60" y="120" width="220" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="web" value="&lt;b&gt;Web Dashboard (Admin)&lt;/b&gt;&lt;br&gt;- Validasi Data Kuisioner&lt;br&gt;- Kelola Data Master Kos&lt;br&gt;- Koordinat Lat/Long&lt;br&gt;- Pengaturan Bobot Standar" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F0FDF4;strokeColor=#15803D;strokeWidth=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="60" y="290" width="220" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="be" value="&lt;b&gt;Backend REST API (Go / Golang)&lt;/b&gt;&lt;br&gt;- Router &amp;amp; Handler REST API&lt;br&gt;- Hitung Haversine Distance (Radius Bumi: 6.371 km)&lt;br&gt;- Normalisasi Matriks Keputusan SAW&lt;br&gt;- Komputasi Nilai Preferensi Vi &amp;amp; Ranking" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAF5FF;strokeColor=#7E22CE;strokeWidth=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="360" y="180" width="250" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="maps" value="&lt;b&gt;Google Maps API&lt;/b&gt;&lt;br&gt;- Reverse Geocoding&lt;br&gt;- Titik Koordinat Kampus &amp;amp; Kos" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFBEB;strokeColor=#B45309;strokeWidth=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="690" y="120" width="200" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="db" value="&lt;b&gt;Database MySQL&lt;/b&gt;&lt;br&gt;- tb_kos, tb_kriteria&lt;br&gt;- tb_bobot, tb_rekomendasi" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#F8FAFC;strokeColor=#334155;strokeWidth=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="710" y="270" width="160" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=2;endArrow=classic;startArrow=classic;" edge="1" parent="1" source="mob" target="be">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=2;endArrow=classic;startArrow=classic;" edge="1" parent="1" source="web" target="be">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=2;endArrow=classic;startArrow=classic;" edge="1" parent="1" source="be" target="maps">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1E293B;strokeWidth=2;endArrow=classic;startArrow=classic;" edge="1" parent="1" source="be" target="db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

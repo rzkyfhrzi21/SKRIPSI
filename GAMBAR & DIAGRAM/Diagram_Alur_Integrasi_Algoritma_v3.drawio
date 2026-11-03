@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" version="24.0.0">
+  <diagram id="pipeline-v3" name="Pipeline Integrasi Haversine SAW v3 (BW)">
+    <mxGraphModel dx="1422" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1654" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- JUDUL -->
+        <mxCell id="hdr" value="&lt;b&gt;PIPELINE INTEGRASI ALGORITMA HAVERSINE DISTANCE DAN SIMPLE ADDITIVE WEIGHTING (SAW)&lt;/b&gt;&lt;br&gt;Sistem Rekomendasi Kos Mahasiswa IIB Darmajaya" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;fontColor=#FFFFFF;fontSize=13;align=center;" vertex="1" parent="1">
+          <mxGeometry x="100" y="40" width="970" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- TAHAP 1: INPUT -->
+        <mxCell id="step1" value="&lt;b&gt;TAHAP 1 — INPUT DATA&lt;/b&gt;&lt;br&gt;• Koordinat Kampus IIB Darmajaya (tetap)&lt;br&gt;• Koordinat Kos (Lat, Lon) dari database&lt;br&gt;• 6 Atribut Kos: Harga (C1), Jarak (C2), Fasilitas (C3), Luas (C4), Kebersihan (C5), Keamanan (C6)&lt;br&gt;• Vektor Bobot Preferensi: W = [w1..w6]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontSize=11;align=left;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="100" y="130" width="970" height="85" as="geometry" />
+        </mxCell>
+
+        <!-- ARROW 1 -->
+        <mxCell id="arr1" value="Data Koordinat Spasial" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#000000;strokeWidth=2;fontSize=10;fontStyle=1;endArrow=block;endFill=1;" edge="1" parent="1" source="step1" target="step2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- TAHAP 2: HAVERSINE -->
+        <mxCell id="step2" value="&lt;b&gt;TAHAP 2 — HAVERSINE DISTANCE (KOMPUTASI SPASIAL)&lt;/b&gt;&lt;br&gt;• Konversi derajat ke radian (Δφ, Δλ)&lt;br&gt;• Rumus haversine: a = sin²(Δφ/2) + cos(φ1)·cos(φ2)·sin²(Δλ/2)&lt;br&gt;• Sudut busur: c = 2·atan2(√a, √(1−a))&lt;br&gt;• Jarak garis lurus: &lt;b&gt;d_i = R · c&lt;/b&gt; (R = 6.371.000 m)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F0F0F0;strokeColor=#000000;strokeWidth=2;fontSize=11;align=left;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="100" y="255" width="970" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- ARROW 2 -->
+        <mxCell id="arr2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#000000;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="step2" target="bridge">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- TITIK INTEGRASI -->
+        <mxCell id="bridge" value="&lt;b&gt;TITIK INTEGRASI — INJEKSI JARAK (d_i) KE KRITERIA C2 (JARAK, SIFAT COST)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D8D8D8;strokeColor=#000000;strokeWidth=3;fontColor=#000000;fontSize=12;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="100" y="395" width="970" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- ARROW 3 -->
+        <mxCell id="arr3" value="Matriks Keputusan Lengkap X (m × 6)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#000000;strokeWidth=2;fontSize=10;fontStyle=1;endArrow=block;endFill=1;" edge="1" parent="1" source="bridge" target="step3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- TAHAP 3: SAW -->
+        <mxCell id="step3" value="&lt;b&gt;TAHAP 3 — SIMPLE ADDITIVE WEIGHTING / SAW (MCDM ENGINE)&lt;/b&gt;&lt;br&gt;• Matriks X (m×6): Alternatif Kos × Kriteria [C1: Harga, C2: Jarak, C3: Fasilitas, C4: Luas, C5: Kebersihan, C6: Keamanan]&lt;br&gt;• Normalisasi Cost (C1,C2): r_ij = min(x_ij) / x_ij&lt;br&gt;• Normalisasi Benefit (C3–C6): r_ij = x_ij / max(x_ij)&lt;br&gt;• Skor Preferensi: &lt;b&gt;V_i = Σ (w_j · r_ij)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F0F0F0;strokeColor=#000000;strokeWidth=2;fontSize=11;align=left;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="100" y="485" width="970" height="115" as="geometry" />
+        </mxCell>
+
+        <!-- ARROW 4 -->
+        <mxCell id="arr4" value="Vektor Skor Preferensi V_i" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#000000;strokeWidth=2;fontSize=10;fontStyle=1;endArrow=block;endFill=1;" edge="1" parent="1" source="step3" target="step4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- TAHAP 4: OUTPUT -->
+        <mxCell id="step4" value="&lt;b&gt;TAHAP 4 — OUTPUT REKOMENDASI&lt;/b&gt;&lt;br&gt;• Pengurutan skor tertinggi (Sorting Descending): Peringkat 1 s.d. m&lt;br&gt;• Tampilan: Kartu Rekomendasi, Skor Akhir, Jarak, Tarif Sewa, Rute Navigasi Google Maps" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontSize=11;align=left;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="100" y="645" width="970" height="75" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

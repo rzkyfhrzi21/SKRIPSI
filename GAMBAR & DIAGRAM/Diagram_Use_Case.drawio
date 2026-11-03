@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" version="24.0.0"><diagram id="usecase" name="Use Case Diagram">
+    <mxGraphModel dx="1000" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="sys_box" value="&lt;b&gt;Sistem Rekomendasi Kos (Haversine &amp;amp; SAW)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#475569;strokeWidth=2;verticalAlign=top;align=center;spacingTop=12;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="190" y="40" width="440" height="540" as="geometry" />
+        </mxCell>
+        <mxCell id="act_mhs" value="Mahasiswa" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#EFF6FF;strokeColor=#2563EB;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="60" y="210" width="40" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="act_adm" value="Administrator" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#F0FDF4;strokeColor=#16A34A;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="720" y="210" width="40" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="uc1" value="Jelajah &amp;amp; Cari Kos" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#2563EB;strokeWidth=1.5;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="240" y="80" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="uc2" value="Atur Bobot 6 Kriteria" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#2563EB;strokeWidth=1.5;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="240" y="160" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="uc3" value="Hitung Rekomendasi&lt;br&gt;(Haversine &amp;amp; SAW)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FAF5FF;strokeColor=#7C3AED;strokeWidth=2;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="240" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="uc4" value="Lihat Peringkat &amp;amp; Rute Maps" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#2563EB;strokeWidth=1.5;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="240" y="330" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="uc5" value="Autentikasi Login Mobile" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#16A34A;strokeWidth=1.5;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="420" y="110" width="170" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="uc6" value="Kelola Data Master Kos" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#16A34A;strokeWidth=1.5;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="420" y="380" width="170" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="uc7" value="Validasi Koordinat GPS" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#16A34A;strokeWidth=1.5;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="420" y="470" width="170" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="e_m1" style="endArrow=none;html=1;strokeColor=#2563EB;strokeWidth=1.5;" edge="1" parent="1" source="act_mhs" target="uc1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_m2" style="endArrow=none;html=1;strokeColor=#2563EB;strokeWidth=1.5;" edge="1" parent="1" source="act_mhs" target="uc2"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_m3" style="endArrow=none;html=1;strokeColor=#7C3AED;strokeWidth=2;" edge="1" parent="1" source="act_mhs" target="uc3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_m4" style="endArrow=none;html=1;strokeColor=#2563EB;strokeWidth=1.5;" edge="1" parent="1" source="act_mhs" target="uc4"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_a1" style="endArrow=none;html=1;strokeColor=#16A34A;strokeWidth=1.5;" edge="1" parent="1" source="act_adm" target="uc5"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_a2" style="endArrow=none;html=1;strokeColor=#16A34A;strokeWidth=1.5;" edge="1" parent="1" source="act_adm" target="uc6"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_a3" style="endArrow=none;html=1;strokeColor=#16A34A;strokeWidth=1.5;" edge="1" parent="1" source="act_adm" target="uc7"><mxGeometry relative="1" as="geometry" /></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+
+  
+  </mxfile>

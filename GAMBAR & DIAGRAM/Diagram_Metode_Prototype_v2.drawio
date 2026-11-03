@@ -1,0 +1,82 @@
+<mxfile host="Electron" modified="2026-10-23T14:45:00.000Z" agent="Hermes Agent" version="21.6.8" type="device">
+  <diagram id="proto-v2" name="Model Prototype Siklik 5 Tahap v2">
+    <mxGraphModel dx="1422" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- HEADER -->
+        <mxCell id="hdr" value="&lt;b&gt;MODEL PROTOTYPE SIKLIK (5 TAHAPAN ITERATIF)&lt;/b&gt;&lt;br&gt;Metodologi Pengembangan Sistem Rekomendasi Kos IIB Darmajaya" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4338CA;strokeColor=#4338CA;fontColor=#FFFFFF;fontSize=14;align=center;" vertex="1" parent="1">
+          <mxGeometry x="80" y="30" width="1010" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- FASE 1: KOMUNIKASI -->
+        <mxCell id="f1" value="&lt;b&gt;1. KOMUNIKASI (COMMUNICATION)&lt;/b&gt;&lt;br&gt;Wawancara mahasiswa IIB Darmajaya &amp; survei pemilik kos untuk mengidentifikasi kebutuhan sistem serta 6 kriteria keputusan." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=2;align=left;spacingLeft=12;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="80" y="105" width="800" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="out1" value="&lt;b&gt;Luaran:&lt;/b&gt;&lt;br&gt;Data 6 Kriteria SAW &amp; Spesifikasi Kebutuhan" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#93C5FD;align=center;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="900" y="105" width="190" height="65" as="geometry" />
+        </mxCell>
+
+        <mxCell id="a1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#64748B;strokeWidth=2;" edge="1" parent="1" source="f1" target="f2"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- FASE 2: PERENCANAAN CEPAT -->
+        <mxCell id="f2" value="&lt;b&gt;2. PERENCANAAN CEPAT (QUICK PLAN)&lt;/b&gt;&lt;br&gt;Penyusunan jadwal riset, penentuan tech stack sistem (Flutter, Go, MySQL), dan perancangan pipeline Haversine &amp; SAW." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F0FDFA;strokeColor=#0D9488;strokeWidth=2;align=left;spacingLeft=12;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="80" y="195" width="800" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="out2" value="&lt;b&gt;Luaran:&lt;/b&gt;&lt;br&gt;Jadwal Riset, Spesifikasi Arsitektur, &amp; Formula Algoritma" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#99F6E4;align=center;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="900" y="195" width="190" height="65" as="geometry" />
+        </mxCell>
+
+        <mxCell id="a2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#64748B;strokeWidth=2;" edge="1" parent="1" source="f2" target="f3"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- FASE 3: DESAIN CEPAT -->
+        <mxCell id="f3" value="&lt;b&gt;3. PEMODELAN &amp; DESAIN CEPAT (MODELING QUICK DESIGN)&lt;/b&gt;&lt;br&gt;Pemodelan UML (Use Case &amp; Activity Diagram) serta rancangan wireframe antarmuka visual mobile mahasiswa &amp; administrator." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFBEB;strokeColor=#F59E0B;strokeWidth=2;align=left;spacingLeft=12;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="80" y="285" width="800" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="out3" value="&lt;b&gt;Luaran:&lt;/b&gt;&lt;br&gt;Diagram UML &amp; 6 Wireframe Antarmuka Mobile" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FDE68A;align=center;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="900" y="285" width="190" height="65" as="geometry" />
+        </mxCell>
+
+        <mxCell id="a3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#64748B;strokeWidth=2;" edge="1" parent="1" source="f3" target="f4"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- FASE 4: PEMBENTUKAN PROTOTIPE -->
+        <mxCell id="f4" value="&lt;b&gt;4. PEMBENTUKAN PROTOTIPE (CONSTRUCTION OF PROTOTYPE)&lt;/b&gt;&lt;br&gt;Pengkodean antarmuka mobile Flutter, implementasi REST API backend Go (engine Haversine &amp; SAW), serta koneksi database MySQL." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F3FF;strokeColor=#8B5CF6;strokeWidth=2;align=left;spacingLeft=12;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="80" y="375" width="800" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="out4" value="&lt;b&gt;Luaran:&lt;/b&gt;&lt;br&gt;Working Prototype Mobile App &amp; Backend REST API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#DDD6FE;align=center;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="900" y="375" width="190" height="65" as="geometry" />
+        </mxCell>
+
+        <mxCell id="a4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#64748B;strokeWidth=2;" edge="1" parent="1" source="f4" target="f5"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- FASE 5: PENYERAHAN & EVALUASI -->
+        <mxCell id="f5" value="&lt;b&gt;5. PENYERAHAN, EVALUASI, DAN UMPAN BALIK (DEPLOYMENT &amp; FEEDBACK)&lt;/b&gt;&lt;br&gt;Pengujian operasional Black Box Testing &amp; evaluasi hasil rekomendasi oleh mahasiswa. Menerima saran perbaikan fungsionalitas." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#10B981;strokeWidth=2;align=left;spacingLeft=12;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="80" y="465" width="800" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="out5" value="&lt;b&gt;Luaran:&lt;/b&gt;&lt;br&gt;Hasil Uji Fungsional &amp; Status Persetujuan Akhir" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#A7F3D0;align=center;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="900" y="465" width="190" height="65" as="geometry" />
+        </mxCell>
+
+        <!-- FEEDBACK LOOP / SIKLUS BALIK -->
+        <mxCell id="fb_loop" value="&lt;b&gt;SIKLUS BALIK (ITERATIF FEEDBACK LOOP)&lt;/b&gt;&lt;br&gt;Jika ada ketidaksesuaian/revisi &amp;rarr; Kembali ke Quick Plan (Fase 2) / Quick Design (Fase 3)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF2F2;strokeColor=#EF4444;strokeWidth=2;fontColor=#991B1B;fontSize=11;align=center;" vertex="1" parent="1">
+          <mxGeometry x="80" y="555" width="1010" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- FEEDBACK ARROW -->
+        <mxCell id="fb_arr" value="Revisi Kebutuhan / Desain" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#DC2626;strokeWidth=2;dashed=1;fontSize=10;fontColor=#B91C1C;fontStyle=1;" edge="1" parent="1" source="f5" target="fb_loop">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fb_back" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#DC2626;strokeWidth=2;dashed=1;" edge="1" parent="1" source="fb_loop" target="f2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="40" y="580" />
+              <mxPoint x="40" y="227" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

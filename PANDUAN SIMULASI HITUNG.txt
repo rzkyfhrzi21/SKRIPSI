@@ -1,0 +1,185 @@
+================================================================================
+🧮 SIMULASI PERHITUNGAN MATEMATIS END-TO-END METODE HAVERSINE & SAW (6 KRITERIA)
+TUGAS AKHIR : REKOMENDASI KOS STUDI KASUS IIB DARMAJAYA BANDAR LAMPUNG
+PENELITI    : RIZKY FAHREZI (NPM: 2311010133)
+PROGRAM     : S1 TEKNIK INFORMATIKA - INSTITUT INFORMATIKA DAN BISNIS DARMAJAYA
+================================================================================
+
+Simulasi ini menyajikan langkah demi langkah perhitungan nyata (end-to-end)
+mulai dari data mentah kuesioner terkumpul, perhitungan jarak bola bumi (Haversine),
+pembentukan matriks keputusan, proses normalisasi, hingga keluar hasil perankingan
+rekomendasi nomor 1 di layar aplikasi mobile Android (Flutter).
+
+--------------------------------------------------------------------------------
+📍 TITIK ACUAN KAMPUS (BENCHMARK KAMPUS IIB DARMAJAYA)
+--------------------------------------------------------------------------------
+- Titik Acuan Gerbang Utama : φ1 = -5.3789° LS, λ1 = 105.2538° BT
+- Nilai Radius Rata-rata Bumi : R = 6.371 km = 6.371.000 meter
+
+
+--------------------------------------------------------------------------------
+🗂️ TAHAP 1: DATA AWAL MASUK (DARI HASIL KUESIONER & GOOGLE MAPS)
+--------------------------------------------------------------------------------
+Misalkan terkumpul 3 sampel alternatif rumah kos riil di sekitar kampus:
+
++------+----------------------------+---------------------+--------------+-----+------+--------+------+
+| Kode | Nama Alternatif Kos        | Koordinat GPS (φ, λ)| C1 Harga/Thn | C3* | C4** | C5***  | C6^  |
++------+----------------------------+---------------------+--------------+-----+------+--------+------+
+|  A1  | Kos Mawar (Gg. Rajawali)   | -5.3815, 105.2520   | Rp 5.000.000 |  4  |  3   |   4    |  4   |
+|  A2  | Kos Melati (Gedong Meneng) | -5.3850, 105.2580   | Rp 7.500.000 |  5  |  4   |   5    |  5   |
+|  A3  | Kos Anggrek (Gg. PU)       | -5.3760, 105.2550   | Rp 4.200.000 |  3  |  3   |   3    |  3   |
++------+----------------------------+---------------------+--------------+-----+------+--------+------+
+Keterangan:
+* C3   = Fasilitas Kamar (skala 1-5)
+** C4  = Luas Kamar (skala 1-5)
+*** C5 = Kebersihan Lingkungan (skala 1-5)
+^ C6   = Keamanan Hunian (skala 1-5)
+(Nilai C2 Jarak belum ada karena harus dihitung terlebih dahulu menggunakan formula Haversine Distance).
+
+
+--------------------------------------------------------------------------------
+🛰️ TAHAP 2: PERHITUNGAN JARAK DENGAN FORMULA HAVERSINE DISTANCE (C2)
+--------------------------------------------------------------------------------
+Menghitung jarak garis lurus bola bumi dari Gerbang IIB Darmajaya ke masing-masing kos.
+
+Rumus Haversine:
+a = sin²(Δφ / 2) + cos(φ1) * cos(φ2) * sin²(Δλ / 2)
+c = 2 * atan2(√a, √(1 - a))
+d = R * c   (dengan R = 6.371.000 meter)
+
+Contoh Perhitungan Detail untuk A1 (Kos Mawar):
+1. Konversi Selisih Derajat ke Radian:
+   Δφ = (-5.3815 - (-5.3789)) * (π / 180) = -0.0026 * 0.0174533 = -0.00004538 rad
+   Δλ = (105.2520 - 105.2538) * (π / 180) = -0.0018 * 0.0174533 = -0.00003142 rad
+   φ1 = -5.3789° = -0.093879 rad
+   φ2 = -5.3815° = -0.093925 rad
+
+2. Hitung Kuadrat Setengah Tali Busur (a):
+   a = sin²(-0.00004538 / 2) + cos(-0.093879) * cos(-0.093925) * sin²(-0.00003142 / 2)
+   a = sin²(-0.00002269) + (0.9956 * 0.9956) * sin²(-0.00001571)
+   a = 0.000000000515 + (0.9912 * 0.000000000247)
+   a ≈ 0.000000000759
+
+3. Hitung Sudut Busur Sferis (c):
+   c = 2 * atan2(√0.000000000759, √(1 - 0.000000000759))
+   c = 2 * 0.00002755 = 0.00005510 rad
+
+4. Hitung Jarak Linier Permukaan Bumi (d):
+   d = 6.371.000 meter * 0.00005510 ≈ 351 meter
+
+Dengan algoritma yang sama, backend menghitung jarak untuk A2 dan A3:
+- Jarak A1 (Kos Mawar)   = 351 meter
+- Jarak A2 (Kos Melati)  = 825 meter
+- Jarak A3 (Kos Anggrek) = 348 meter
+
+
+--------------------------------------------------------------------------------
+📊 TAHAP 3: MEMBENTUK MATRIKS KEPUTUSAN (X)
+--------------------------------------------------------------------------------
+Nilai jarak (C2) dari Haversine dimasukkan ke dalam Matriks X (ukuran 3 baris x 6 kolom):
+
++-------------+--------------+-----------+---------------+----------+------------+------------+
+| Alternatif  | C1 (Harga)   | C2 (Jarak)| C3 (Fasilitas)| C4 (Luas)| C5 (Bersih)| C6 (Aman)  |
+|             | [COST]       | [COST]    | [BENEFIT]     | [BENEFIT]| [BENEFIT]  | [BENEFIT]  |
++-------------+--------------+-----------+---------------+----------+------------+------------+
+|     A1      | Rp 5.000.000 |   351 m   |       4       |    3     |     4      |     4      |
+|     A2      | Rp 7.500.000 |   825 m   |       5       |    4     |     5      |     5      |
+|     A3      | Rp 4.200.000 |   348 m   |       3       |    3     |     3      |     3      |
++-------------+--------------+-----------+---------------+----------+------------+------------+
+| Nilai       | Min =        | Min =     | Max =         | Max =    | Max =      | Max =      |
+| Ekstrem     | 4.200.000    | 348       | 5             | 4        | 5          | 5          |
++-------------+--------------+-----------+---------------+----------+------------+------------+
+
+
+--------------------------------------------------------------------------------
+⚖️ TAHAP 4: MENETAPKAN VEKTOR BOBOT PREFERENSI (W)
+--------------------------------------------------------------------------------
+Berdasarkan hasil kuesioner mahasiswa atau input slider pada aplikasi Flutter:
+- W1 (Harga)      = 0.25 (25%)
+- W2 (Jarak)      = 0.25 (25%)
+- W3 (Fasilitas)  = 0.20 (20%)
+- W4 (Luas Kamar) = 0.10 (10%)
+- W5 (Kebersihan) = 0.10 (10%)
+- W6 (Keamanan)   = 0.10 (10%)
+Total Bobot W = 0.25 + 0.25 + 0.20 + 0.10 + 0.10 + 0.10 = 1.00 (100%)
+
+
+--------------------------------------------------------------------------------
+🔄 TAHAP 5: NORMALISASI MATRIKS KEPUTUSAN (R)
+--------------------------------------------------------------------------------
+Kaidah Normalisasi:
+- Kriteria Biaya (Cost - C1, C2)       : Rij = Min(Xij) / Xij
+- Kriteria Keuntungan (Benefit - C3-C6) : Rij = Xij / Max(Xij)
+
+1. Normalisasi Alternatif A1 (Kos Mawar):
+   R11 (Harga)     = 4.200.000 / 5.000.000 = 0.840
+   R12 (Jarak)     = 348 / 351             = 0.991
+   R13 (Fasilitas) = 4 / 5                 = 0.800
+   R14 (Luas)      = 3 / 4                 = 0.750
+   R15 (Bersih)    = 4 / 5                 = 0.800
+   R16 (Aman)      = 4 / 5                 = 0.800
+
+2. Normalisasi Alternatif A2 (Kos Melati):
+   R21 (Harga)     = 4.200.000 / 7.500.000 = 0.560
+   R22 (Jarak)     = 348 / 825             = 0.422
+   R23 (Fasilitas) = 5 / 5                 = 1.000
+   R24 (Luas)      = 4 / 4                 = 1.000
+   R25 (Bersih)    = 5 / 5                 = 1.000
+   R26 (Aman)      = 5 / 5                 = 1.000
+
+3. Normalisasi Alternatif A3 (Kos Anggrek):
+   R31 (Harga)     = 4.200.000 / 4.200.000 = 1.000
+   R32 (Jarak)     = 348 / 348             = 1.000
+   R33 (Fasilitas) = 3 / 5                 = 0.600
+   R34 (Luas)      = 3 / 4                 = 0.750
+   R35 (Bersih)    = 3 / 5                 = 0.600
+   R36 (Aman)      = 3 / 5                 = 0.600
+
+
+--------------------------------------------------------------------------------
+🏆 TAHAP 6: MENGHITUNG NILAI PREFERENSI AKHIR (Vi)
+--------------------------------------------------------------------------------
+Formula: Vi = ∑ (Wj * Rij)  untuk j = 1 sampai 6
+
+1. Perhitungan Skor V1 untuk A1 (Kos Mawar):
+   V1 = (0.25 * 0.840) + (0.25 * 0.991) + (0.20 * 0.800) + (0.10 * 0.750) + (0.10 * 0.800) + (0.10 * 0.800)
+   V1 = 0.2100 + 0.2478 + 0.1600 + 0.0750 + 0.0800 + 0.0800
+   V1 = 0.8528
+
+2. Perhitungan Skor V2 untuk A2 (Kos Melati):
+   V2 = (0.25 * 0.560) + (0.25 * 0.422) + (0.20 * 1.000) + (0.10 * 1.000) + (0.10 * 1.000) + (0.10 * 1.000)
+   V2 = 0.1400 + 0.1055 + 0.2000 + 0.1000 + 0.1000 + 0.1000
+   V2 = 0.7455
+
+3. Perhitungan Skor V3 untuk A3 (Kos Anggrek):
+   V3 = (0.25 * 1.000) + (0.25 * 1.000) + (0.20 * 0.600) + (0.10 * 0.750) + (0.10 * 0.600) + (0.10 * 0.600)
+   V3 = 0.2500 + 0.2500 + 0.1200 + 0.0750 + 0.0600 + 0.0600
+   V3 = 0.8150
+
+
+--------------------------------------------------------------------------------
+📱 TAHAP 7: KESIMPULAN PERANKINGAN & OUTPUT APLIKASI FLUTTER
+--------------------------------------------------------------------------------
+Urutan rekomendasi kos diurutkan dari nilai Vi terbesar ke terkecil:
+
++-----------+------+----------------------------+----------+---------------------------------+
+| Peringkat | Kode | Nama Tempat Kos            | Skor Vi  | Status Rekomendasi di Mobile    |
++-----------+------+----------------------------+----------+---------------------------------+
+|   🥇 1    |  A1  | Kos Mawar (Gg. Rajawali)   |  0.8528  | Rekomendasi Utama (Terbaik)     |
+|   🥈 2    |  A3  | Kos Anggrek (Gg. PU)       |  0.8150  | Rekomendasi Alternatif Kedua    |
+|   🥉 3    |  A2  | Kos Melati (Gedong Meneng) |  0.7455  | Rekomendasi Alternatif Ketiga   |
++-----------+------+----------------------------+----------+---------------------------------+
+
+💡 ANALISIS LOGIKA ILMIAH UNTUK SIDANG SEMINAR PROPOSAL:
+- Mengapa Kos Mawar (A1) bisa menang menjadi Juara 1?
+  Meskipun Kos Anggrek (A3) harganya lebih murah (Rp 4.200.000) dan Kos Melati (A2)
+  memiliki fasilitas termewah (bintang 5), Kos Mawar keluar sebagai juara 1 karena
+  memiliki titik keseimbangan (trade-off) yang paling optimal:
+  1. Harganya masih sangat ramah kantong mahasiswa (Rp 5.000.000).
+  2. Jaraknya sangat dekat ke gerbang Darmajaya (351 meter vs 825 meter milik Melati).
+  3. Kualitas fasilitas, kebersihan, dan keamanan berada di atas standar rata-rata (skor 4).
+
+Inilah hakikat keunggulan Sistem Pendukung Keputusan (SPK) dengan metode SAW & Haversine:
+Mampu menyaring dan menentukan pilihan hunian yang paling rasional secara matematis
+dan objektif, tanpa bias penilaian subjektif manusia!
+================================================================================

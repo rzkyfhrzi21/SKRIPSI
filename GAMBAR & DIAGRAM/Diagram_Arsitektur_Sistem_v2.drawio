@@ -1,0 +1,62 @@
+<mxfile host="Electron" modified="2026-10-23T14:15:00.000Z" agent="Hermes Agent" version="21.6.8" type="device">
+  <diagram id="arch-v2" name="Arsitektur Sistem Client-Server v2">
+    <mxGraphModel dx="1422" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- HEADER -->
+        <mxCell id="hdr" value="&lt;b&gt;ARSITEKTUR SISTEM CLIENT-SERVER TIGA TINGKAT (THREE-TIER)&lt;/b&gt;&lt;br&gt;Sistem Rekomendasi Kos IIB Darmajaya Berbasis Mobile Flutter &amp; Backend Go" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0F172A;strokeColor=#0F172A;fontColor=#FFFFFF;fontSize=14;align=center;" vertex="1" parent="1">
+          <mxGeometry x="80" y="30" width="1010" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- CONTAINER TIER 1: CLIENT TIER -->
+        <mxCell id="t1" value="&lt;b&gt;LAPISAN KLIEN (CLIENT TIER / PRESENTATION LAYER)&lt;/b&gt;" style="swimlane;startSize=25;fillColor=#EFF6FF;strokeColor=#3B82F6;strokeWidth=2;fontSize=12;fontColor=#1E40AF;" vertex="1" parent="1">
+          <mxGeometry x="80" y="100" width="1010" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="c1" value="&lt;b&gt;📱 Mobile App Mahasiswa (Flutter)&lt;/b&gt;&lt;br&gt;• Form Input Slider Bobot 6 Kriteria (1–5)&lt;br&gt;• Peta Sebaran Kos (Google Maps SDK)&lt;br&gt;• Tampilan Kartu Rekomendasi Terurut Ranking" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#93C5FD;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="t1">
+          <mxGeometry x="30" y="35" width="450" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="c2" value="&lt;b&gt;📱 Mobile App Administrator (Flutter)&lt;/b&gt;&lt;br&gt;• Form Autentikasi Masuk (Login JWT)&lt;br&gt;• Manajemen Data Master Kos (CRUD)&lt;br&gt;• Penandaan Titik Koordinat GPS Lapangan" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#93C5FD;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="t1">
+          <mxGeometry x="530" y="35" width="450" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- ARROW T1 <-> T2 -->
+        <mxCell id="arr_t1_t2" value="RESTful API (JSON over HTTPS)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#4F46E5;strokeWidth=2;fontSize=11;fontStyle=1;fontColor=#3730A3;" edge="1" parent="1" source="t1" target="t2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- CONTAINER TIER 2: APPLICATION SERVER TIER -->
+        <mxCell id="t2" value="&lt;b&gt;LAPISAN SERVER APLIKASI (APPLICATION / LOGIC TIER - GO MICROSERVICES)&lt;/b&gt;" style="swimlane;startSize=25;fillColor=#ECFDF5;strokeColor=#10B981;strokeWidth=2;fontSize=12;fontColor=#065F46;" vertex="1" parent="1">
+          <mxGeometry x="80" y="270" width="1010" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="b1" value="&lt;b&gt;🧭 Haversine Distance Engine&lt;/b&gt;&lt;br&gt;Menghitung jarak garis lurus bola bumi dari gerbang IIB Darmajaya ke koordinat kos (satuan meter/km)." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#A7F3D0;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="t2">
+          <mxGeometry x="30" y="40" width="290" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="b2" value="&lt;b&gt;⚖️ Decision Engine (SAW)&lt;/b&gt;&lt;br&gt;Injeksi jarak ke kriteria C2, normalisasi matriks R (cost/benefit), perkalian bobot W, &amp; ranking nilai preferensi Vi." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#A7F3D0;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="t2">
+          <mxGeometry x="360" y="40" width="290" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="b3" value="&lt;b&gt;🛡️ Data &amp; Auth Service&lt;/b&gt;&lt;br&gt;Pengelolaan token otentikasi JWT admin, validasi payload JSON, &amp; repository handler basis data." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#A7F3D0;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="t2">
+          <mxGeometry x="690" y="40" width="290" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- ARROW T2 <-> T3 -->
+        <mxCell id="arr_t2_t3" value="Kueri SQL &amp; Layanan Spasial Eksternal" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#D97706;strokeWidth=2;fontSize=11;fontStyle=1;fontColor=#92400E;" edge="1" parent="1" source="t2" target="t3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- CONTAINER TIER 3: DATA & EXTERNAL SERVICES TIER -->
+        <mxCell id="t3" value="&lt;b&gt;LAPISAN BASIS DATA &amp; LAYANAN EKSTERNAL (DATA &amp; EXTERNAL SERVICES TIER)&lt;/b&gt;" style="swimlane;startSize=25;fillColor=#FFFBEB;strokeColor=#F59E0B;strokeWidth=2;fontSize=12;fontColor=#92400E;" vertex="1" parent="1">
+          <mxGeometry x="80" y="460" width="1010" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="d1" value="&lt;b&gt;🗄️ Relational Database (MySQL)&lt;/b&gt;&lt;br&gt;• Tabel Data Master Kos (Atribut, Fasilitas, Koordinat GPS)&lt;br&gt;• Tabel Konfigurasi Kriteria SAW (Biaya &amp; Keuntungan)&lt;br&gt;• Tabel Kredensial Administrator (Password Hash Terenkripsi)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FDE68A;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="t3">
+          <mxGeometry x="30" y="35" width="450" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="d2" value="&lt;b&gt;🗺️ Google Maps Platform API&lt;/b&gt;&lt;br&gt;• Google Maps SDK: Render peta dasar interaktif&lt;br&gt;• Geocoding API: Konversi titik lokasi&lt;br&gt;• Directions API: Panduan navigasi rute jalan riil kampus-kos" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#FDE68A;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="t3">
+          <mxGeometry x="530" y="35" width="450" height="80" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

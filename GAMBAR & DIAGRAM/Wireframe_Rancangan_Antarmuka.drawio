@@ -1,0 +1,174 @@
+<mxfile host="app.diagrams.net" version="24.0.0">
+  <diagram id="wireframes_mobile" name="Wireframe Mobile Antarmuka">
+    <mxGraphModel dx="1200" dy="850" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1100">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- GROUP 1: MOBILE MAHASISWA -->
+        <mxCell id="grp_mhs" value="&lt;b&gt;RANCANGAN ANTARMUKA MOBILE MAHASISWA&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#3B82F6;strokeWidth=2;verticalAlign=top;fontFamily=Segoe UI;fontSize=14;fontColor=#1E3A8A;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="980" height="480" as="geometry" />
+        </mxCell>
+
+        <!-- SCREEN 1: BERANDA -->
+        <mxCell id="p1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0F172A;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="60" y="80" width="210" height="420" as="geometry" />
+        </mxCell>
+        <mxCell id="p1_hdr" value="&lt;b&gt;Sistem Rekomendasi Kos&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#2563EB;strokeColor=none;fontColor=#FFFFFF;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="65" y="90" width="200" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="p1_box" value="&lt;b&gt;Acuan GPS Kampus&lt;/b&gt;&lt;br&gt;IIB Darmajaya (-5.3789, 105.2538)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EFF6FF;strokeColor=#3B82F6;fontSize=9;fontColor=#1E40AF;" vertex="1" parent="1">
+          <mxGeometry x="75" y="135" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="p1_search" value="Cari nama / area kos..." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#CBD5E1;fontSize=9;fontColor=#94A3B8;align=left;" vertex="1" parent="1">
+          <mxGeometry x="75" y="185" width="180" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="p1_btn" value="&lt;b&gt;MULAI REKOMENDASI (SAW)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#10B981;strokeColor=none;fontColor=#FFFFFF;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="75" y="220" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="p1_list" value="&lt;b&gt;Daftar Kos Terdekat:&lt;/b&gt;&lt;br&gt;• Kos Melati (320m - Rp 650rb)&lt;br&gt;• Kos Darma (510m - Rp 750rb)&lt;br&gt;• Kos Griya (850m - Rp 800rb)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#E2E8F0;fontSize=9;align=left;fontColor=#334155;" vertex="1" parent="1">
+          <mxGeometry x="75" y="260" width="180" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="p1_lbl" value="&lt;b&gt;Layar 1: Beranda &amp;amp; Cari&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#0F172A;" vertex="1" parent="1">
+          <mxGeometry x="75" y="485" width="180" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- SCREEN 2: BOBOT SAW -->
+        <mxCell id="p2" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0F172A;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="300" y="80" width="210" height="420" as="geometry" />
+        </mxCell>
+        <mxCell id="p2_hdr" value="&lt;b&gt;Preferensi Bobot SAW&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#2563EB;strokeColor=none;fontColor=#FFFFFF;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="305" y="90" width="200" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="p2_desc" value="Tentukan Tingkat Kepentingan (1-5):" style="text;html=1;align=center;fontSize=9;fontColor=#1E293B;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="305" y="130" width="200" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="p2_c1" value="C1: Harga Sewa (Cost) [●——] 5" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#CBD5E1;fontSize=8;align=left;" vertex="1" parent="1">
+          <mxGeometry x="315" y="155" width="180" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="p2_c2" value="C2: Jarak Kampus (Cost) [●——] 5" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#CBD5E1;fontSize=8;align=left;" vertex="1" parent="1">
+          <mxGeometry x="315" y="185" width="180" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="p2_c3" value="C3: Fasilitas Kamar (Ben) [—●—] 4" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#CBD5E1;fontSize=8;align=left;" vertex="1" parent="1">
+          <mxGeometry x="315" y="215" width="180" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="p2_c4" value="C4: Luas Kamar (Benefit) [——●] 3" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#CBD5E1;fontSize=8;align=left;" vertex="1" parent="1">
+          <mxGeometry x="315" y="245" width="180" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="p2_c5" value="C5: Kebersihan (Benefit) [—●—] 4" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#CBD5E1;fontSize=8;align=left;" vertex="1" parent="1">
+          <mxGeometry x="315" y="275" width="180" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="p2_c6" value="C6: Keamanan (Benefit) [—●—] 4" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#CBD5E1;fontSize=8;align=left;" vertex="1" parent="1">
+          <mxGeometry x="315" y="305" width="180" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="p2_btn" value="&lt;b&gt;HITUNG REKOMENDASI SEKARANG&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2563EB;strokeColor=none;fontColor=#FFFFFF;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="315" y="350" width="180" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="p2_lbl" value="&lt;b&gt;Layar 2: Input Bobot SAW&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#0F172A;" vertex="1" parent="1">
+          <mxGeometry x="315" y="485" width="180" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- SCREEN 3: HASIL RANKING -->
+        <mxCell id="p3" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0F172A;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="540" y="80" width="210" height="420" as="geometry" />
+        </mxCell>
+        <mxCell id="p3_hdr" value="&lt;b&gt;Hasil Rekomendasi SAW&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#2563EB;strokeColor=none;fontColor=#FFFFFF;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="545" y="90" width="200" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="p3_r1" value="&lt;b&gt;RANK 1: Kos Putri Melati&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#15803d&quot;&gt;&lt;b&gt;Skor Preferensi (Vi): 0.942&lt;/b&gt;&lt;/font&gt;&lt;br&gt;Jarak: 320m | Rp 650.000/bln" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ECFDF5;strokeColor=#10B981;fontSize=8;align=left;" vertex="1" parent="1">
+          <mxGeometry x="555" y="135" width="180" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="p3_r2" value="&lt;b&gt;RANK 2: Kos Pondok Darma&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#2563eb&quot;&gt;&lt;b&gt;Skor Preferensi (Vi): 0.885&lt;/b&gt;&lt;/font&gt;&lt;br&gt;Jarak: 510m | Rp 750.000/bln" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#CBD5E1;fontSize=8;align=left;" vertex="1" parent="1">
+          <mxGeometry x="555" y="210" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="p3_r3" value="&lt;b&gt;RANK 3: Kos Griya Utama&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#2563eb&quot;&gt;&lt;b&gt;Skor Preferensi (Vi): 0.810&lt;/b&gt;&lt;/font&gt;&lt;br&gt;Jarak: 850m | Rp 800.000/bln" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#CBD5E1;fontSize=8;align=left;" vertex="1" parent="1">
+          <mxGeometry x="555" y="280" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="p3_btn" value="Ubah Preferensi Bobot" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#94A3B8;fontSize=9;fontColor=#475569;" vertex="1" parent="1">
+          <mxGeometry x="555" y="355" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="p3_lbl" value="&lt;b&gt;Layar 3: Hasil Ranking&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#0F172A;" vertex="1" parent="1">
+          <mxGeometry x="555" y="485" width="180" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- SCREEN 4: DETAIL & MAPS -->
+        <mxCell id="p4" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0F172A;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="780" y="80" width="210" height="420" as="geometry" />
+        </mxCell>
+        <mxCell id="p4_hdr" value="&lt;b&gt;Detail &amp;amp; Rute Kos&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#2563EB;strokeColor=none;fontColor=#FFFFFF;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="785" y="90" width="200" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="p4_img" value="[ Foto Kamar &amp;amp; Bangunan Kos ]" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E2E8F0;strokeColor=#94A3B8;fontSize=8;fontColor=#64748B;" vertex="1" parent="1">
+          <mxGeometry x="795" y="135" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="p4_info" value="&lt;b&gt;Kos Putri Melati&lt;/b&gt;&lt;br&gt;Jl. ZA. Pagar Alam No. 12 (320m)&lt;br&gt;• Tarif: Rp 650.000 / bulan&lt;br&gt;• Fasilitas: Kasur, Lemari, WiFi, KM&lt;br&gt;• Luas: 3x4 m | Aman: CCTV, Gembok" style="text;html=1;align=left;fontSize=8;fontColor=#1E293B;" vertex="1" parent="1">
+          <mxGeometry x="795" y="220" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="p4_map" value="[ Preview Peta Rute Google Maps ]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#F59E0B;fontSize=8;fontColor=#B45309;" vertex="1" parent="1">
+          <mxGeometry x="795" y="295" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="p4_btn" value="&lt;b&gt;BUKA NAVIGASI GOOGLE MAPS&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#10B981;strokeColor=none;fontColor=#FFFFFF;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="795" y="355" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="p4_lbl" value="&lt;b&gt;Layar 4: Detail &amp;amp; Peta Rute&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#0F172A;" vertex="1" parent="1">
+          <mxGeometry x="795" y="485" width="180" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- GROUP 2: MOBILE ADMINISTRATOR -->
+        <mxCell id="grp_adm" value="&lt;b&gt;RANCANGAN ANTARMUKA MOBILE ADMINISTRATOR&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#0D9488;strokeWidth=2;verticalAlign=top;fontFamily=Segoe UI;fontSize=14;fontColor=#0F766E;" vertex="1" parent="1">
+          <mxGeometry x="1050" y="40" width="510" height="480" as="geometry" />
+        </mxCell>
+
+        <!-- SCREEN 5: LOGIN ADMIN -->
+        <mxCell id="p5" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0F172A;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="80" width="210" height="420" as="geometry" />
+        </mxCell>
+        <mxCell id="p5_hdr" value="&lt;b&gt;Login Administrator Mobile&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0F766E;strokeColor=none;fontColor=#FFFFFF;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1085" y="90" width="200" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="p5_logo" value="[ Icon Admin / Kunci ]" style="ellipse;whiteSpace=wrap;html=1;fillColor=#CCFBF1;strokeColor=#14B8A6;fontSize=8;fontColor=#0F766E;" vertex="1" parent="1">
+          <mxGeometry x="1145" y="145" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="p5_u" value="Username: admin_darmajaya" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#CBD5E1;fontSize=8;fontColor=#334155;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1095" y="240" width="180" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="p5_p" value="Password: ••••••••••••" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#CBD5E1;fontSize=8;fontColor=#334155;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1095" y="275" width="180" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="p5_btn" value="&lt;b&gt;MASUK DASHBOARD ADMIN&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0F766E;strokeColor=none;fontColor=#FFFFFF;fontSize=9;" vertex="1" parent="1">
+          <mxGeometry x="1095" y="320" width="180" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="p5_lbl" value="&lt;b&gt;Layar 5: Login Admin&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#0F172A;" vertex="1" parent="1">
+          <mxGeometry x="1095" y="485" width="180" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- SCREEN 6: MANAJEMEN MASTER KOS -->
+        <mxCell id="p6" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#0F172A;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1320" y="80" width="210" height="420" as="geometry" />
+        </mxCell>
+        <mxCell id="p6_hdr" value="&lt;b&gt;Manajemen Data Master Kos&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0F766E;strokeColor=none;fontColor=#FFFFFF;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="1325" y="90" width="200" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="p6_btn_add" value="+ Tambah Rumah Kos Baru" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#10B981;strokeColor=none;fontColor=#FFFFFF;fontSize=8;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1335" y="135" width="180" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="p6_item1" value="&lt;b&gt;Kos Putri Melati&lt;/b&gt;&lt;br&gt;Lat: -5.3792 | Long: 105.2541&lt;br&gt;Tarif: Rp 650.000 | [Edit] [Hapus]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#CBD5E1;fontSize=8;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1335" y="170" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="p6_item2" value="&lt;b&gt;Kos Pondok Darma&lt;/b&gt;&lt;br&gt;Lat: -5.3805 | Long: 105.2530&lt;br&gt;Tarif: Rp 750.000 | [Edit] [Hapus]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#CBD5E1;fontSize=8;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1335" y="230" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="p6_item3" value="&lt;b&gt;Kos Griya Utama&lt;/b&gt;&lt;br&gt;Lat: -5.3820 | Long: 105.2515&lt;br&gt;Tarif: Rp 800.000 | [Edit] [Hapus]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#CBD5E1;fontSize=8;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1335" y="290" width="180" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="p6_sync" value="Sinkronisasi Koordinat GPS Riil" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0F766E;strokeColor=none;fontColor=#FFFFFF;fontSize=8;" vertex="1" parent="1">
+          <mxGeometry x="1335" y="355" width="180" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="p6_lbl" value="&lt;b&gt;Layar 6: Manajemen Data Kos&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;fontSize=10;fontColor=#0F172A;" vertex="1" parent="1">
+          <mxGeometry x="1335" y="485" width="180" height="20" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

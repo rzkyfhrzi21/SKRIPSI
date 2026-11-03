@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" version="24.0.0">
+  <diagram id="proto-v3" name="Model Prototype v3 (BW)">
+    <mxGraphModel dx="1422" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- JUDUL -->
+        <mxCell id="hdr" value="&lt;b&gt;MODEL PENGEMBANGAN SISTEM PROTOTYPE — PRESSMAN (2015)&lt;/b&gt;&lt;br&gt;Metodologi Pembangunan Sistem Rekomendasi Kos IIB Darmajaya" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;fontColor=#FFFFFF;fontSize=13;align=center;" vertex="1" parent="1">
+          <mxGeometry x="80" y="30" width="1010" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- FASE 1 -->
+        <mxCell id="f1" value="&lt;b&gt;1. KOMUNIKASI&lt;/b&gt;&lt;br&gt;(Communication)&lt;br&gt;Identifikasi kebutuhan mahasiswa &amp; 6 kriteria keputusan" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontSize=11;align=center;" vertex="1" parent="1">
+          <mxGeometry x="80" y="115" width="800" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="out1" value="Spesifikasi Kebutuhan&lt;br&gt;&amp; Data 6 Kriteria SAW" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F0F0F0;strokeColor=#000000;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="900" y="115" width="190" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="a1" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#000000;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="f1" target="f2"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- FASE 2 -->
+        <mxCell id="f2" value="&lt;b&gt;2. PERENCANAAN CEPAT&lt;/b&gt;&lt;br&gt;(Quick Plan)&lt;br&gt;Penentuan tech stack (Flutter, Go, MySQL) &amp; perancangan pipeline Haversine–SAW" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontSize=11;align=center;" vertex="1" parent="1">
+          <mxGeometry x="80" y="205" width="800" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="out2" value="Jadwal Riset&lt;br&gt;&amp; Spesifikasi Arsitektur" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F0F0F0;strokeColor=#000000;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="900" y="205" width="190" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="a2" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#000000;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="f2" target="f3"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- FASE 3 -->
+        <mxCell id="f3" value="&lt;b&gt;3. DESAIN CEPAT&lt;/b&gt;&lt;br&gt;(Modeling Quick Design)&lt;br&gt;Pemodelan UML (Use Case &amp; Activity Diagram) &amp; rancangan wireframe antarmuka mobile" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontSize=11;align=center;" vertex="1" parent="1">
+          <mxGeometry x="80" y="295" width="800" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="out3" value="Diagram UML&lt;br&gt;&amp; Wireframe Antarmuka" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F0F0F0;strokeColor=#000000;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="900" y="295" width="190" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="a3" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#000000;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="f3" target="f4"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- FASE 4 -->
+        <mxCell id="f4" value="&lt;b&gt;4. PEMBENTUKAN PROTOTIPE&lt;/b&gt;&lt;br&gt;(Construction of Prototype)&lt;br&gt;Pengkodean Flutter, implementasi REST API Go (engine Haversine &amp; SAW), koneksi MySQL" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontSize=11;align=center;" vertex="1" parent="1">
+          <mxGeometry x="80" y="385" width="800" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="out4" value="Working Prototype&lt;br&gt;Mobile App &amp; Backend API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F0F0F0;strokeColor=#000000;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="900" y="385" width="190" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="a4" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#000000;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="f4" target="f5"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- FASE 5 -->
+        <mxCell id="f5" value="&lt;b&gt;5. PENYERAHAN, EVALUASI &amp; UMPAN BALIK&lt;/b&gt;&lt;br&gt;(Deployment &amp; Feedback)&lt;br&gt;Black Box Testing &amp; evaluasi hasil rekomendasi oleh mahasiswa" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontSize=11;align=center;" vertex="1" parent="1">
+          <mxGeometry x="80" y="475" width="800" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="out5" value="Hasil Uji Fungsional&lt;br&gt;&amp; Status Persetujuan" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F0F0F0;strokeColor=#000000;fontSize=10;align=center;" vertex="1" parent="1">
+          <mxGeometry x="900" y="475" width="190" height="65" as="geometry" />
+        </mxCell>
+
+        <!-- FEEDBACK LOOP -->
+        <mxCell id="fb" value="&lt;b&gt;SIKLUS BALIK (ITERATIF)&lt;/b&gt; — Jika ada revisi → Kembali ke Fase 2 / Fase 3" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D8D8D8;strokeColor=#000000;strokeWidth=2;fontColor=#000000;fontSize=11;align=center;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="565" width="1010" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="fb_arr" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#000000;strokeWidth=2;dashed=1;endArrow=block;endFill=1;" edge="1" parent="1" source="f5" target="fb">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="fb_back" value="Iterasi" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeColor=#000000;strokeWidth=2;dashed=1;fontSize=10;fontStyle=1;endArrow=block;endFill=1;" edge="1" parent="1" source="fb" target="f2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="40" y="587" />
+              <mxPoint x="40" y="237" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

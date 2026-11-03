@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" version="24.0.0"><diagram id="activity" name="Activity Diagram">
+    <mxGraphModel dx="1000" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <mxCell id="lane_mhs" value="&lt;b&gt;Mahasiswa (Aplikasi Mobile)&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;startSize=30;fillColor=#EFF6FF;strokeColor=#2563EB;strokeWidth=1.5;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="340" height="860" as="geometry" />
+        </mxCell>
+        <mxCell id="start_node" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1E293B;strokeColor=#1E293B;" vertex="1" parent="lane_mhs">
+          <mxGeometry x="155" y="50" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="act1" value="Membuka Menu Rekomendasi Kos" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2563EB;strokeWidth=1.5;fontSize=11;" vertex="1" parent="lane_mhs">
+          <mxGeometry x="70" y="110" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="act2" value="Input Nilai Bobot 6 Kriteria (1–5)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2563EB;strokeWidth=1.5;fontSize=11;" vertex="1" parent="lane_mhs">
+          <mxGeometry x="70" y="180" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="act3" value="Kirim Request HTTP POST Rekomendasi" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2563EB;strokeWidth=1.5;fontSize=11;" vertex="1" parent="lane_mhs">
+          <mxGeometry x="70" y="250" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="act9" value="Render Kartu Peringkat Rekomendasi" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2563EB;strokeWidth=1.5;fontSize=11;" vertex="1" parent="lane_mhs">
+          <mxGeometry x="70" y="690" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="act10" value="Buka Rute Arah Navigasi Google Maps" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#2563EB;strokeWidth=1.5;fontSize=11;" vertex="1" parent="lane_mhs">
+          <mxGeometry x="70" y="760" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="end_node" value="" style="ellipse;shape=doubleEllipse;whiteSpace=wrap;html=1;fillColor=#1E293B;strokeColor=#1E293B;strokeWidth=2;" vertex="1" parent="lane_mhs">
+          <mxGeometry x="155" y="820" width="30" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="lane_sys" value="&lt;b&gt;Sistem Backend (Go &amp;amp; MySQL)&lt;/b&gt;" style="swimlane;whiteSpace=wrap;html=1;startSize=30;fillColor=#FAF5FF;strokeColor=#7C3AED;strokeWidth=1.5;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="380" y="40" width="380" height="860" as="geometry" />
+        </mxCell>
+        <mxCell id="act4" value="Ambil Data Koordinat &amp;amp; Skor Kos MySQL" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#7C3AED;strokeWidth=1.5;fontSize=11;" vertex="1" parent="lane_sys">
+          <mxGeometry x="80" y="250" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="act5" value="Hitung Haversine Distance ke Kampus" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#7C3AED;strokeWidth=1.5;fontSize=11;" vertex="1" parent="lane_sys">
+          <mxGeometry x="80" y="320" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="act6" value="Susun Matriks Keputusan X" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#7C3AED;strokeWidth=1.5;fontSize=11;" vertex="1" parent="lane_sys">
+          <mxGeometry x="80" y="390" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="dec_saw" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FEF3C7;strokeColor=#D97706;strokeWidth=1.5;" vertex="1" parent="lane_sys">
+          <mxGeometry x="170" y="460" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="norm_cost" value="rij = min(xij) / xij&lt;br&gt;&lt;i&gt;(Cost)&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D97706;fontSize=10;" vertex="1" parent="lane_sys">
+          <mxGeometry x="30" y="520" width="130" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="norm_ben" value="rij = xij / max(xij)&lt;br&gt;&lt;i&gt;(Benefit)&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#16A34A;fontSize=10;" vertex="1" parent="lane_sys">
+          <mxGeometry x="220" y="520" width="130" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="merge_saw" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#64748B;strokeWidth=1.5;" vertex="1" parent="lane_sys">
+          <mxGeometry x="175" y="580" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="act7" value="Hitung Nilai Preferensi Vi = Σ(wj * rij)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#7C3AED;strokeWidth=1.5;fontSize=11;" vertex="1" parent="lane_sys">
+          <mxGeometry x="80" y="630" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="act8" value="Sorting Descending &amp;amp; Format JSON" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#7C3AED;strokeWidth=1.5;fontSize=11;" vertex="1" parent="lane_sys">
+          <mxGeometry x="80" y="690" width="220" height="40" as="geometry" />
+        </mxCell>
+
+        
+        <mxCell id="f1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#334155;strokeWidth=1.5;endArrow=classic;" edge="1" parent="1" source="start_node" target="act1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#334155;strokeWidth=1.5;endArrow=classic;" edge="1" parent="1" source="act1" target="act2"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#334155;strokeWidth=1.5;endArrow=classic;" edge="1" parent="1" source="act2" target="act3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f4" value="HTTP POST" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#2563EB;strokeWidth=2;endArrow=classic;fontSize=10;fontColor=#1E40AF;" edge="1" parent="1" source="act3" target="act4"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#334155;strokeWidth=1.5;endArrow=classic;" edge="1" parent="1" source="act4" target="act5"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#334155;strokeWidth=1.5;endArrow=classic;" edge="1" parent="1" source="act5" target="act6"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#334155;strokeWidth=1.5;endArrow=classic;" edge="1" parent="1" source="act6" target="dec_saw"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f_cost" value="[Cost]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#D97706;strokeWidth=1.5;endArrow=classic;fontSize=9;" edge="1" parent="1" source="dec_saw" target="norm_cost"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f_ben" value="[Benefit]" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#16A34A;strokeWidth=1.5;endArrow=classic;fontSize=9;" edge="1" parent="1" source="dec_saw" target="norm_ben"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f_m1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#334155;strokeWidth=1.5;endArrow=classic;" edge="1" parent="1" source="norm_cost" target="merge_saw"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f_m2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#334155;strokeWidth=1.5;endArrow=classic;" edge="1" parent="1" source="norm_ben" target="merge_saw"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#334155;strokeWidth=1.5;endArrow=classic;" edge="1" parent="1" source="merge_saw" target="act7"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#334155;strokeWidth=1.5;endArrow=classic;" edge="1" parent="1" source="act7" target="act8"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f10" value="HTTP JSON" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#7C3AED;strokeWidth=2;endArrow=classic;fontSize=10;fontColor=#6B21A8;" edge="1" parent="1" source="act8" target="act9"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#334155;strokeWidth=1.5;endArrow=classic;" edge="1" parent="1" source="act9" target="act10"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="f12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#334155;strokeWidth=1.5;endArrow=classic;" edge="1" parent="1" source="act10" target="end_node"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
